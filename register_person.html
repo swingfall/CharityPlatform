@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+</head>
+<body>
+    
+    <h1>自然人注册</h1>
+    <h2>所有个人注册的基础，与机构注册相对应</h2>
+    <p></p>
+    <form action="form-element.php" method="post">
+        <table>
+          <tr>
+            <td>
+              <p><b>邮箱地址(登录账号):</b></p>
+            </td>
+            <td>
+              <!-- Here I put the input tag in p tags to keep spacing consistent, but they don't need to be in p tags. -->
+              <p><input type="text" name="email" size="35" maxlength="64" value=""></p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p><b>密码:&nbsp;</b></p>
+            </td>
+            <td>
+              <p><input name="password" size="35" maxlength="64" value=""></input></p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+            </td>
+            <td>
+              <p><input type="submit" name="submit" value=" 提交 "></p>
+              <input type="hidden" name="submitted" value="True">
+            </td>
+          </tr>
+        </table>
+      </form>
+</body>
+</html>
