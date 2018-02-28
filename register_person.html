@@ -1,15 +1,88 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Page Title</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <script src="main.js"></script>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Register person</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="js/jquery.min.js"></script>
+  <!-- Custom Theme files -->
+  <!--theme-style-->
+  <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />	
+  <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+  <!--google font not available-->
 </head>
+
 <body>
-    
+  <!--banner-->
+	<script src="js/responsiveslides.min.js"></script>
+	<script>
+    $(function () {
+      $("#slider").responsiveSlides({
+      	auto: true,
+      	speed: 500,
+        namespace: "callbacks",
+        pager: true,
+      });
+    });
+	</script>
+	<div class="slider">
+	    <div class="callbacks_container">
+	      <ul class="rslides" id="slider">
+	        <li>
+	          <img src="images/top.jpg" alt="">
+	          <div class="banner">
+				      <h2>Banner page 0</h2>
+				      <p>Banner page 0 description</p>
+			      </div>
+	        </li>
+	        <li>
+	          <img src="images/top1.jpg" alt="">
+	        	<div class="banner">
+              <h2>Banner page 1</h2>
+              <p>Banner page 1 description</p>
+			      </div>
+	        </li>
+	        <li>
+	          <img src="images/top.jpg" alt="">
+	        	<div class="banner">
+              <h2>Banner page 2</h2>
+              <p>Banner page 2 description</p>
+			      </div>
+	        </li>
+	      </ul>
+	  </div>
+	  </div>
+	  <!--header-->
+		<div class="header">
+			<div class="container">			
+				<div class="logo">
+					<a href="index.html"><img src="images/logo.jpg" alt=" " width="128" height="128"/></a>
+				</div>
+				<div class="top-nav">
+					<span class="menu"> </span>
+					<ul>
+						<li class="active" ><a href="index.html" class="scroll">HOME </a></li>
+						<li><a href="what.html" class="scroll">WHAT WE DO  </a></li>
+						<li><a href="404.html" class="scroll">WHO WE ARE</a></li>
+						<li><a href="gallery.html" class="scroll">GALLERY</a></li>
+						<li><a href="blog.html" class="scroll">BLOG</a></li>
+						<li><a href="contact.html" class="scroll">CONTACT US</a></li>
+					</ul>
+					<!--script-->
+				<script>
+					$("span.menu").click(function(){
+						$(".top-nav ul").slideToggle(500, function(){
+						});
+					});
+			</script>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+  <!---->
+  <div class="content">
     <h1>自然人注册</h1>
     <h2>所有个人注册的基础，与机构注册相对应</h2>
     <p></p>
@@ -42,5 +115,20 @@
           </tr>
         </table>
       </form>
+  </div>
+
+  <!--footer-->
+  <div class="footer">
+    <div class="container">
+      <span class="drop"> </span>
+      <p>境界の彼方 <span>S.E.U.</span> Suzhou, P.R.China</p>
+      <p class="footer-class">Copyright &copy; 1984.</p>
+      <ul class="social-icons">
+        <li class="twitter"><a href="#"><span> </span></a></li>
+        <li class="gmail"><a href="#"><span> </span> </a></li>
+        <li class="print"><a href="#"><span> </span> </a></li>
+      </ul>
+    </div>	
+  </div>
 </body>
 </html>
