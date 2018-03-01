@@ -4,19 +4,37 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <title>Register person</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+  <link href="../css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-  <script src="js/jquery.min.js"></script>
+  <script src="../js/jquery.min.js"></script>
   <!-- Custom Theme files -->
   <!--theme-style-->
-  <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />	
+  <link href="../css/style.css" rel="stylesheet" type="text/css" media="all" />	
   <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
   <!--google font not available-->
+  <script>
+    function register_person() {
+        if(typeof(Storage) !== "undefined") {
+            email = document.getElementsByName("email")[0].getAttribute("value")
+            pwd = document.getElementsByName("pwd")[0].value
+            pwd_rpt = document.getElementsByName("pwd_rpt")[0].value
+            if (pwd == pwd_rpt) {
+                document.getElementById("register_result").innerHTML = "user " + email + " registered!"
+                localStorage.email = email
+                localStorage.pwd = pwd
+            } else {
+                document.getElementById("register_result").innerHTML = "passwords not match"
+            }
+        } else {
+            document.getElementById("register_result").innerHTML = "Sorry, your browser does not support web storage.";
+        }
+    }
+    </script>
 </head>
 
 <body>
   <!--banner-->
-	<script src="js/responsiveslides.min.js"></script>
+	<script src="../js/responsiveslides.min.js"></script>
 	<script>
     $(function () {
       $("#slider").responsiveSlides({
@@ -31,21 +49,21 @@
 	    <div class="callbacks_container">
 	      <ul class="rslides" id="slider">
 	        <li>
-	          <img src="images/top.jpg" alt="">
+	          <img src="../images/top.jpg" alt="">
 	          <div class="banner">
 				      <h2>Banner page 0</h2>
 				      <p>Banner page 0 description</p>
 			      </div>
 	        </li>
 	        <li>
-	          <img src="images/top1.jpg" alt="">
+	          <img src="../images/top1.jpg" alt="">
 	        	<div class="banner">
               <h2>Banner page 1</h2>
               <p>Banner page 1 description</p>
 			      </div>
 	        </li>
 	        <li>
-	          <img src="images/top.jpg" alt="">
+	          <img src="../images/top.jpg" alt="">
 	        	<div class="banner">
               <h2>Banner page 2</h2>
               <p>Banner page 2 description</p>
@@ -58,7 +76,7 @@
 		<div class="header">
 			<div class="container">			
 				<div class="logo">
-					<a href="index.html"><img src="images/logo.jpg" alt=" " width="128" height="128"/></a>
+					<a href="index.html"><img src="../images/logo.jpg" alt=" " width="128" height="128"/></a>
 				</div>
 				<div class="top-nav">
 					<span class="menu"> </span>
@@ -86,7 +104,7 @@
     <h1>自然人注册</h1>
     <h2>所有个人注册的基础，与机构注册相对应</h2>
     <p></p>
-    <form action="form-element.php" method="post">
+    <form action="register_person_process.php" method="get">
         <table>
           <tr>
             <td>
@@ -94,7 +112,7 @@
             </td>
             <td>
               <!-- Here I put the input tag in p tags to keep spacing consistent, but they don't need to be in p tags. -->
-              <p><input type="text" name="email" size="35" maxlength="64" value=""></p>
+              <p><input type="text" name="email" size="35" maxlength="64" value="abc@163.com"></p>
             </td>
           </tr>
           <tr>
@@ -102,19 +120,28 @@
               <p><b>密码:&nbsp;</b></p>
             </td>
             <td>
-              <p><input name="password" size="35" maxlength="64" value=""></input></p>
+              <p><input name="pwd" size="35" maxlength="64" value="password"></input></p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p><b>重复密码:&nbsp;</b></p>
+            </td>
+            <td>
+              <p><input name="pwd_rpt" size="35" maxlength="64" value="passwordx"></input></p>
             </td>
           </tr>
           <tr>
             <td>
             </td>
             <td>
-              <p><input type="submit" name="submit" value=" 提交 "></p>
+              <p><input type="button" name="submit" value=" 提交 " onclick="register_person()"></p>
               <input type="hidden" name="submitted" value="True">
             </td>
           </tr>
         </table>
       </form>
+      <div id="register_result"></div>
   </div>
 
   <!--footer-->

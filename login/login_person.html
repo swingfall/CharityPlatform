@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>login</title>
+    <script>
+    function check_person_login() {
+        if(typeof(Storage) !== "undefined") {
+            localEmail = document.getElementsByName("email")[0].value
+            localPwd = document.getElementsByName("pwd")[0].value
+            if (localStorage.email == localEmail){
+                document.getElementById("login_result").innerHTML = "found user name " + localStorage.email
+                if (localStorage.pwd == localPwd) {
+                    document.getElementById("login_result").innerHTML += " login ok!"
+                }
+                else{
+                    document.getElementById("login_result").innerHTML += " password not match"
+                }
+            } else {
+                document.getElementById("login_result").innerHTML = "not found user name " + localEmail
+            }
+        } else {
+            document.getElementById("login_result").innerHTML = "Sorry, your browser does not support web storage.";
+        }
+    }
+    </script>
+</head>
+<body>
+<form>
+    个人邮件:<input type="text" name="email" value="abc@163.com"><br>
+    密码:<input type="password" name="pwd" value="password"><br>
+    <!--
+        change type to submit to post your result
+    -->
+    <input type="button" value="登录" onclick="check_person_login()">
+</form>
+<div id="login_result"></div>
+</body>
+</html>
