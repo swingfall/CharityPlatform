@@ -5,7 +5,6 @@
   <title>Register person</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="../css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
   <script src="../js/jquery.min.js"></script>
   <!-- Custom Theme files -->
@@ -13,22 +12,14 @@
   <link href="../css/style.css" rel="stylesheet" type="text/css" media="all" />	
   <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
   <!--google font not available-->
+  <script src="../js/we.account.management.js" type="text/javascript"></script> 
   <script>
     function register_person() {
-      if(typeof(Storage) !== "undefined") {
-          email = document.getElementsByName("email")[0].value
-          pwd = document.getElementsByName("pwd")[0].value
-          pwd_rpt = document.getElementsByName("pwd_rpt")[0].value
-          if (pwd == pwd_rpt) {
-              document.getElementById("register_result").innerHTML = "user " + email + " registered!"
-              localStorage.email = email
-              localStorage.pwd = pwd
-          } else {
-              document.getElementById("register_result").innerHTML = "passwords not match"
-          }
-      } else {
-          document.getElementById("register_result").innerHTML = "Sorry, your browser does not support web storage.";
-      }
+        email = document.getElementsByName("email")[0].value
+        pwd = document.getElementsByName("pwd")[0].value
+        pwd_rpt = document.getElementsByName("pwd_rpt")[0].value
+        loginResult = we_register_person(email,pwd,pwd_rpt)
+        document.getElementById("register_result").innerHTML = loginResult[1]
     }
   </script>
   <style type="text/css">
@@ -98,9 +89,6 @@
 		</div>
   <!---->
 
-  <!--
-    reference
-  -->
 <div class="register_table">
   <div style="text-align: center;  font-size: 2em;  color: #000; 
       font-weight: 600;  width: 60%;  margin: 0 auto;	">
@@ -129,12 +117,15 @@
               <p><b>重复密码:&nbsp;</b></p>
             </td>
             <td style="width: 50%">
-              <p><input type="password" name="pwd_rpt" size="25" maxlength="32" value="passwordx"></input></p>
+              <p><input type="password" name="pwd_rpt" size="25" maxlength="32" value="password"></input></p>
             </td>
           </tr>
         </tbody>
       </table>
-      <p><input type="button" name="submit" value=" 提交 " onclick="register_person()"></p>
+      <p>
+        <input type="button" name="submit" value=" 提交 " onclick="register_person()">
+        <input type="button" name="go_to_login" value=" 前往登陆 " onclick="document.location.href='../login/login_person.html'"/>
+      </p>
       <input type="hidden" name="submitted" value="True">
     </form>
     <div id="register_result"></div>
