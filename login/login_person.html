@@ -1,8 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 <head>
     <meta charset="UTF-8">
-    <title>login</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>login page</title>
     <script>
     function check_person_login() {
         if(typeof(Storage) !== "undefined") {
@@ -11,7 +13,8 @@
             if (localStorage.email == localEmail){
                 document.getElementById("login_result").innerHTML = "found user name " + localStorage.email
                 if (localStorage.pwd == localPwd) {
-                    document.getElementById("login_result").innerHTML += " login ok!"
+                    document.getElementById("login_result").innerHTML += " login ok!";
+                    document.getElementsByName("email")[0].type = 'hidden';
                 }
                 else{
                     document.getElementById("login_result").innerHTML += " password not match"

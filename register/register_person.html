@@ -5,6 +5,7 @@
   <title>Register person</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="../css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
   <script src="../js/jquery.min.js"></script>
   <!-- Custom Theme files -->
@@ -14,22 +15,27 @@
   <!--google font not available-->
   <script>
     function register_person() {
-        if(typeof(Storage) !== "undefined") {
-            email = document.getElementsByName("email")[0].getAttribute("value")
-            pwd = document.getElementsByName("pwd")[0].value
-            pwd_rpt = document.getElementsByName("pwd_rpt")[0].value
-            if (pwd == pwd_rpt) {
-                document.getElementById("register_result").innerHTML = "user " + email + " registered!"
-                localStorage.email = email
-                localStorage.pwd = pwd
-            } else {
-                document.getElementById("register_result").innerHTML = "passwords not match"
-            }
-        } else {
-            document.getElementById("register_result").innerHTML = "Sorry, your browser does not support web storage.";
-        }
+      if(typeof(Storage) !== "undefined") {
+          email = document.getElementsByName("email")[0].value
+          pwd = document.getElementsByName("pwd")[0].value
+          pwd_rpt = document.getElementsByName("pwd_rpt")[0].value
+          if (pwd == pwd_rpt) {
+              document.getElementById("register_result").innerHTML = "user " + email + " registered!"
+              localStorage.email = email
+              localStorage.pwd = pwd
+          } else {
+              document.getElementById("register_result").innerHTML = "passwords not match"
+          }
+      } else {
+          document.getElementById("register_result").innerHTML = "Sorry, your browser does not support web storage.";
+      }
     }
-    </script>
+  </script>
+  <style type="text/css">
+    .bs-example{
+    	margin: 20px;
+    }
+  </style>
 </head>
 
 <body>
@@ -79,15 +85,6 @@
 					<a href="index.html"><img src="../images/logo.jpg" alt=" " width="128" height="128"/></a>
 				</div>
 				<div class="top-nav">
-					<span class="menu"> </span>
-					<ul>
-						<li class="active" ><a href="index.html" class="scroll">HOME </a></li>
-						<li><a href="what.html" class="scroll">WHAT WE DO  </a></li>
-						<li><a href="404.html" class="scroll">WHO WE ARE</a></li>
-						<li><a href="gallery.html" class="scroll">GALLERY</a></li>
-						<li><a href="blog.html" class="scroll">BLOG</a></li>
-						<li><a href="contact.html" class="scroll">CONTACT US</a></li>
-					</ul>
 					<!--script-->
 				<script>
 					$("span.menu").click(function(){
@@ -100,62 +97,63 @@
 			</div>
 		</div>
   <!---->
-  <div class="content">
-    <h1>自然人注册</h1>
-    <h2>所有个人注册的基础，与机构注册相对应</h2>
-    <p></p>
+
+  <!--
+    reference
+  -->
+<div class="register_table">
+  <div style="text-align: center;  font-size: 2em;  color: #000; 
+      font-weight: 600;  width: 60%;  margin: 0 auto;	">
     <form action="register_person_process.php" method="get">
-        <table>
+      <table class="table">
+        <tbody>
           <tr>
-            <td>
-              <p><b>邮箱地址(登录账号):</b></p>
+            <td style="width: 50%">
+              <p><b>个人邮箱(登录账号):</b></p>
             </td>
-            <td>
-              <!-- Here I put the input tag in p tags to keep spacing consistent, but they don't need to be in p tags. -->
-              <p><input type="text" name="email" size="35" maxlength="64" value="abc@163.com"></p>
+            <td style="width: 50%">
+                <!-- Here I put the input tag in p tags to keep spacing consistent, but they don't need to be in p tags. -->
+              <p><input type="text" name="email" size="25" maxlength="32" value="abc@163.com"></p>
             </td>
           </tr>
           <tr>
-            <td>
-              <p><b>密码:&nbsp;</b></p>
+            <td style="width: 50%">
+                  <p><b>密码:&nbsp;</b></p>
             </td>
-            <td>
-              <p><input name="pwd" size="35" maxlength="64" value="password"></input></p>
+            <td style="width: 50%">
+              <p><input type="password" name="pwd" size="25" maxlength="32" value="password"></input></p>
             </td>
           </tr>
           <tr>
-            <td>
+            <td style="width: 50%">
               <p><b>重复密码:&nbsp;</b></p>
             </td>
-            <td>
-              <p><input name="pwd_rpt" size="35" maxlength="64" value="passwordx"></input></p>
+            <td style="width: 50%">
+              <p><input type="password" name="pwd_rpt" size="25" maxlength="32" value="passwordx"></input></p>
             </td>
           </tr>
-          <tr>
-            <td>
-            </td>
-            <td>
-              <p><input type="button" name="submit" value=" 提交 " onclick="register_person()"></p>
-              <input type="hidden" name="submitted" value="True">
-            </td>
-          </tr>
-        </table>
-      </form>
-      <div id="register_result"></div>
-  </div>
+        </tbody>
+      </table>
+      <p><input type="button" name="submit" value=" 提交 " onclick="register_person()"></p>
+      <input type="hidden" name="submitted" value="True">
+    </form>
+    <div id="register_result"></div>
+  </div> 
+</div>
 
-  <!--footer-->
-  <div class="footer">
-    <div class="container">
-      <span class="drop"> </span>
-      <p>境界の彼方 <span>S.E.U.</span> Suzhou, P.R.China</p>
-      <p class="footer-class">Copyright &copy; 1984.</p>
-      <ul class="social-icons">
-        <li class="twitter"><a href="#"><span> </span></a></li>
-        <li class="gmail"><a href="#"><span> </span> </a></li>
-        <li class="print"><a href="#"><span> </span> </a></li>
-      </ul>
-    </div>	
-  </div>
+<!--footer-->
+<div class="footer">
+  <div class="container">
+    <span class="drop"> </span>
+    <p>境界の彼方 <span>S.E.U.</span> Suzhou, P.R.China</p>
+    <p class="footer-class">Copyright &copy; 1Q84.</p>
+    <ul class="social-icons">
+      <li class="twitter"><a href="#"><span> </span></a></li>
+      <li class="gmail"><a href="#"><span> </span></a></li>
+      <li class="print"><a href="#"><span> </span></a></li>
+    </ul>
+  </div>	
+</div>
+
 </body>
 </html>
