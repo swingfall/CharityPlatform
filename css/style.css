@@ -175,10 +175,10 @@ ul.callbacks_tabs.callbacks1_tabs {
 .banner h2{
 	margin:0 0 0.2em;
 	color:#fff;
-	font-size: 3.5em;
-	text-transform: uppercase;
-	font-weight: 900;
+	font-size: 3em;
+	text-transform: uppercase
 }
+
 .banner p{
 	color:#fff;
 	font-size:1.2em;
@@ -926,6 +926,7 @@ ul.comment-list .desc {
 	text-align:center;
 	padding:3em 0;
 }
+
 span.drop{
 	background:url(../images/img-sprite.png)-60px -2px no-repeat;
 	width:40px;
@@ -940,6 +941,8 @@ span.drop{
 	text-transform: uppercase;
 	padding:1em 0;
 }
+
+
 .footer p  a{
 	color: #ff0505;
 	text-decoration:none;
