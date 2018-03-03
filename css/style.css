@@ -24,6 +24,25 @@ h2,h3,h4,h5,h6,p{
 	z-index: 9;
 	width: 100%;
 }
+.bottom{
+	background: rgba(0, 0, 0, 0.62);
+	position: absolute;
+	padding-top: 35px;
+	left: 20%;
+	bottom: 0;
+	z-index: 9;
+	height: 132px;
+	margin:auto;
+	width: 60%;
+}
+
+.bottom p{
+	text-align: center;
+	color: #ffffff;
+	font-size: 3em;
+}
+
+
 .logo{
 	float: left;	
 }
@@ -160,17 +179,17 @@ ul.callbacks_tabs.callbacks1_tabs {
 }
 .banner {
 	display: block;
-	z-index: 2;
+	z-index: 9;
 	text-shadow: none;
 	padding: 14em 3em 6em 6em;
 	margin: 0;
 	max-width: none;
 	position: absolute;
-	top: 131px;
-	left: 51%;
-	background: url(../images/back.png)0px 0px no-repeat;
+	top: -16px;
+	left: 60%;
+	background: url(../images/back.png)0px 147px no-repeat;
 	width: 564px;
-	min-height: 526px;
+	/*min-height: 526px;*/
 }
 .banner h2{
 	margin:0 0 0.2em;
