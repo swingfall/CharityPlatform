@@ -42,11 +42,39 @@ h2,h3,h4,h5,h6,p{
 	color: #ffffff;
 	font-size: 3em;
 }
+/*target*/
+
+.profile{
+	float: left;
+}
+
+.list{
+	float:right;
+}
 
 .content{
 	margin-top: 50px;
 }
 
+.main_content{
+	margin: 30px auto;
+	width: 1000px;
+	min-height: 400px;
+}
+
+.main_content .list ul li{
+	display: inline-block;
+	
+}
+
+.list a{
+	color:#000000;
+}
+
+.profile h2{
+	text-align: center;
+	margin-top: 20px;
+}
 
 .logo{
 	float: left;
@@ -553,9 +581,9 @@ margin:0 0 1em;
 
 /*--what--*/
 .banner-in{
-	background:url(../images/banner.jpg) no-repeat center;
+	background:url(../images/top.jpg) no-repeat center;
 	width:100%;
-	min-height:250px;
+	min-height:300px;
 	display:block;
 	position:relative;
 	background-size:cover;
@@ -956,6 +984,9 @@ ul.comment-list .desc {
 .sub-in input[type="submit"]:hover{
 	background: #f8d62e;	
 }
+
+
+
 /*--footer--*/
 .footer{
 	background:#292929;
