@@ -46,10 +46,16 @@ h2,h3,h4,h5,h6,p{
 
 .profile{
 	float: left;
+	margin: 45px;
+	padding: 20px;
+	border: 1px solid #b99125;
 }
 
 .list{
-	float:right;
+	float:left;
+	font-size: 2em;
+	margin-left: 1em;
+	margin-top: 5em;
 }
 
 .content{
@@ -57,14 +63,15 @@ h2,h3,h4,h5,h6,p{
 }
 
 .main_content{
-	margin: 30px auto;
+	margin: 50px auto;
 	width: 1000px;
-	min-height: 400px;
+	min-height: 800px;
+	border: 2px solid #bacbd6;
 }
 
 .main_content .list ul li{
 	display: inline-block;
-	
+	margin-left: 40px;
 }
 
 .list a{
@@ -683,8 +690,8 @@ margin:0 0 1em;
 	margin-top: 2%;
 }
 .resp-tabs-list {
-float:right;
-  list-style: none;
+	float:right;
+  	list-style: none;
     margin: 3em 0;
     padding: 0;
 }

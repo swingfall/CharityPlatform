@@ -12,7 +12,7 @@
     <!--//theme-style-->
 
     <!--meta 元数据  ->移动端设计网页-->
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
     <!--fonts-->
@@ -21,18 +21,52 @@
 <body>
 
 <!--顶栏-->
-<div class="header container">
-    <div class="logo">
-        <a href="index.html"><img src="images/logo.png" alt="click this to homepage" /></a>
-    </div>
-    <div class="top-nav">
-        <ul>
-            <li><a href="login/login_person.html" class="scroll">登录</a></li>
-            <li><a href="register/register_person.html" class="scroll">注册</a></li>
-        </ul>
-    </div>
+<!--<div class="header container">-->
+    <!--<div class="logo">-->
+        <!--<a href="index.html"><img src="images/logo.png" alt="click this to homepage" /></a>-->
+    <!--</div>-->
+    <!--<div class="top-nav">-->
+        <!--<ul>-->
+            <!--<li><a href="login/login_person.html" class="scroll">登录</a></li>-->
+            <!--<li><a href="register/register_person.html" class="scroll">注册</a></li>-->
+        <!--</ul>-->
+    <!--</div>-->
+<!--</div>-->
+
+<div id="app">
+    {{ message }}
+</div>
+
+<div id="app-2">
+    <span v-bind:title="message">
+         鼠标悬停几秒钟查看此处动态绑定的提示信息!
+    </span>
+</div>
+
+<div id="app-3">
+    <p v-if="seen">你现在看到我了</p>
+</div>
+
+<div id="app-4">
+    <ol>
+        <li v-for="todo in todos">
+            {{todo.text}}
+        </li>
+    </ol>
+</div>
+
+<div id="app-5">
+    <p>{{message}}</p>
+    <button v-on:click="reverseMessage">逆转消息</button>
+</div>
+
+<div id="app-6">
+    <p>{{message}}</p>
+    <input v-model="message">
 </div>
 
 
+<script src="js/vue.js"></script>
+<script src="js/vue_use.js"></script>
 </body>
 </html>

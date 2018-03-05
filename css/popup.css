@@ -66,6 +66,7 @@
     width: 50%;
     float: left;
     text-align: center;
+    list-style: none;
 }
 .cd-user-modal-container .cd-switcher li:first-child a {
     border-radius: .25em 0 0 0;
