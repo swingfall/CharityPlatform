@@ -38,8 +38,11 @@ img{border:0}
 .table_con table tbody tr.tb_title td{height:25px; line-height:25px; border-left:solid 1px #e2e5e6; float:left; margin-top:10px}
 .table_con table tbody tr.tb_title td:first-child{border-left:none}
 
+
+
 .table_con table tbody tr{height:45px; border-bottom:solid 1px #e7e7e7}
-.table_con table tbody tr td{height:30px; line-height:30px; float:left; margin-top:8px; padding:0 15px}
+.table_con table tbody tr td{white-space: nowrap;text-overflow: ellipsis;overflow: hidden;
+    height:30px; line-height:30px; float:left; margin-top:8px; padding:0 15px}
 .table_con table tbody tr td input{width:50px; height:25px; float:left; margin-right:10px;border:0;background:none; line-height:25px; text-align:center}
 .table_con table tbody tr td input:last-child{margin:0}
 .table_con table tbody tr td input.bj_btn{border:solid 1px #0c89ff; color:#0c89ff}
