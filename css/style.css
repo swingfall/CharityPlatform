@@ -47,8 +47,8 @@ h2,h3,h4,h5,h6,p{
 .profile{
 	float: left;
 	margin: 45px;
-	padding: 20px;
-	border: 1px solid #b99125;
+	/*padding: 20px;*/
+	/*border: 1px solid #b99125;*/
 }
 
 .list{
