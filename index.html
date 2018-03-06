@@ -14,197 +14,160 @@
 <body>
 
 <!--header-->
-	<!--banner-->
-	<script src="js/responsiveslides.min.js"></script>
-	<script>
-    $(function () {
-      $("#slider").responsiveSlides({
-      	auto: true,
-      	speed: 500,
-        namespace: "callbacks",
-        pager: true,
-      });
+<!--banner-->
+<script src="js/responsiveslides.min.js"></script>
+<script>
+$(function () {
+    $("#slider").responsiveSlides({
+    auto: true,
+    speed: 500,
+    namespace: "callbacks",
+    pager: true,
     });
-	</script>
+});
+</script>
 <div class="banner">
     <h2>历史捐款总额</h2>
     <h2>71,832,612 元</h2>
     <h2>历史捐款总人数</h2>
     <h2>412,897 人</h2>
 </div>
-	<div class="slider">
-	    <div class="callbacks_container">
-	      <ul class="rslides" id="slider">
-	        <li>
-	          <img src="images/top.jpg" alt="">
+<div class="slider">
+    <div class="callbacks_container">
+        <ul class="rslides" id="slider">
+        <li>
+            <img src="images/top.jpg" alt="">
+            <div class="bottom container">
+                <p>一个女孩都不能少：助边疆辍学大龄女童走出大山 改变命运 </p>
+            </div>
+        </li>
+        <li>
+            <img src="images/top1.jpg" alt="">
                 <div class="bottom container">
-                    <p>一个女孩都不能少：助边疆辍学大龄女童走出大山 改变命运 </p>
-                </div>
-	        </li>
-	        <li>
-	          <img src="images/top1.jpg" alt="">
-	        	 <div class="bottom container">
-				<p>“新闻+公益”每天8分钟捐阅读时长送温暖</p>
-			</div>
-	        </li>
-	        <li>
-	          <img src="images/top.jpg" alt="">
-	         <div class="bottom container">
-				<p>99公益日系列纪录片：我想有只左手，像你一样</p>
-			</div>
-	        </li>
-	      </ul>
-	  </div>
-	  </div>
+            <p>“新闻+公益”每天8分钟捐阅读时长送温暖</p>
+        </div>
+        </li>
+        <li>
+            <img src="images/top.jpg" alt="">
+            <div class="bottom container">
+            <p>99公益日系列纪录片：我想有只左手，像你一样</p>
+        </div>
+        </li>
+        </ul>
+    </div>
+</div>
 
-	  <!--login and register-->
-		<div class="header container">
-				<div class="logo">
-					<a href="index.html"><img src="images/logo.png" alt="click this to homepage" /></a>
-				</div>
-				<div class="top-nav">
-					<nav class="main_nav">
-                        <ul>
-						<li><a href="#0" class="scroll">登录</a></li>
-						<li><a href="#0" class="scroll">注册</a></li>
-					</ul>
-                    </nav>
-				</div>
+<!--login and register-->
+<div class="header container">
+    <div class="logo">
+        <a href="index.html"><img src="images/logo.png" alt="click this to homepage" /></a>
+    </div>
+    <div class="top-nav">
+        <nav class="main_nav">
+            <ul>
+            <li><a href="#0" class="scroll">登录</a></li>
+            <li><a href="#0" class="scroll">注册</a></li>
+        </ul>
+        </nav>
+    </div>
 
 
-            <div class="cd-user-modal">
-                <div class="cd-user-modal-container">
-                    <ul class="cd-switcher">
-                        <li><a href="#0">用户登录</a></li>
-                        <li><a href="#0">注册新用户</a></li>
-                    </ul>
+    <div class="cd-user-modal">
+        <div class="cd-user-modal-container">
+            <ul class="cd-switcher">
+                <li><a href="#0">用户登录</a></li>
+                <li><a href="#0">注册新用户</a></li>
+            </ul>
 
-                    <div id="cd-login"> <!-- 登录表单 -->
-                        <form class="cd-form">
-                            <p class="fieldset">
-                                <label class="image-replace cd-username" for="signin-username">用户名</label>
-                                <input class="full-width has-padding has-border" id="signin-username" type="text" placeholder="输入用户名">
-                            </p>
+            <div id="cd-login"> <!-- 登录表单 -->
+                <form class="cd-form">
+                    <p class="fieldset">
+                        <label class="image-replace cd-username" for="signin-username">用户名</label>
+                        <input class="full-width has-padding has-border" id="signin-username" type="text" placeholder="输入用户名">
+                    </p>
 
-                            <p class="fieldset">
-                                <label class="image-replace cd-password" for="signin-password">密码</label>
-                                <input class="full-width has-padding has-border" id="signin-password" type="text"  placeholder="输入密码">
-                            </p>
+                    <p class="fieldset">
+                        <label class="image-replace cd-password" for="signin-password">密码</label>
+                        <input class="full-width has-padding has-border" id="signin-password" type="text"  placeholder="输入密码">
+                    </p>
 
-                            <p class="fieldset">
-                                <input type="checkbox" id="remember-me" checked>
-                                <label for="remember-me">记住登录状态</label>
-                            </p>
+                    <p class="fieldset">
+                        <input type="checkbox" id="remember-me" checked>
+                        <label for="remember-me">记住登录状态</label>
+                    </p>
 
-                            <p class="fieldset">
-                                <input class="full-width2" type="submit" value="登 录">
-                            </p>
-                        </form>
-                    </div>
-
-                    <div id="cd-signup"> <!-- 注册表单 -->
-                        <form class="cd-form">
-                            <p class="fieldset">
-                                <label class="image-replace cd-username" for="signup-username">用户名</label>
-                                <input class="full-width has-padding has-border" id="signup-username" type="text" placeholder="输入用户名">
-                            </p>
-
-                            <p class="fieldset">
-                                <label class="image-replace cd-email" for="signup-email">邮箱</label>
-                                <input class="full-width has-padding has-border" id="signup-email" type="email" placeholder="输入mail">
-                            </p>
-
-                            <p class="fieldset">
-                                <label class="image-replace cd-password" for="signup-password">密码</label>
-                                <input class="full-width has-padding has-border" id="signup-password" type="text"  placeholder="输入密码">
-                            </p>
-
-                            <p class="fieldset">
-                                <input type="checkbox" id="accept-terms">
-                                <label for="accept-terms">我已阅读并同意 <a href="#0">用户协议</a></label>
-                            </p>
-
-                            <p class="fieldset">
-                                <input class="full-width2" type="submit" value="注册新用户">
-                            </p>
-                        </form>
-                    </div>
-
-                    <a href="#0" class="cd-close-form">关闭</a>
-                </div>
+                    <p class="fieldset">
+                        <input class="full-width2" type="submit" value="登 录">
+                    </p>
+                </form>
             </div>
-		</div>
-	<!---->
 
+            <div id="cd-signup"> <!-- 注册表单 -->
+                <form class="cd-form">
+                    <p class="fieldset">
+                        <label class="image-replace cd-username" for="signup-username">用户名</label>
+                        <input class="full-width has-padding has-border" id="signup-username" type="text" placeholder="输入用户名">
+                    </p>
 
-	<!--content-->
-	<div class="content">
-		<!--教育助学-->
-        <div class="container">
-            <a href="#" class="btn btn-1c">教育助学</a>
-            <a href="#" class="all" >查看全部</a>
+                    <p class="fieldset">
+                        <label class="image-replace cd-email" for="signup-email">邮箱</label>
+                        <input class="full-width has-padding has-border" id="signup-email" type="email" placeholder="输入mail">
+                    </p>
+
+                    <p class="fieldset">
+                        <label class="image-replace cd-password" for="signup-password">密码</label>
+                        <input class="full-width has-padding has-border" id="signup-password" type="text"  placeholder="输入密码">
+                    </p>
+
+                    <p class="fieldset">
+                        <input type="checkbox" id="accept-terms">
+                        <label for="accept-terms">我已阅读并同意 <a href="#0">用户协议</a></label>
+                    </p>
+
+                    <p class="fieldset">
+                        <input class="full-width2" type="submit" value="注册新用户">
+                    </p>
+                </form>
+            </div>
+
+            <a href="#0" class="cd-close-form">关闭</a>
         </div>
-			<div class="services-in">
-				<div class="container">
-					<div class="service-grid">
-						<div class="col-md-4 ser-in">
-							<a href="single.html" class="b-link-stripe b-animate-go  thickbox"><div class="b-line b-line1"></div><div class="b-line b-line2"></div><div class="b-line b-line3"></div><div class="b-line b-line4"></div><div class="b-line b-line5"></div>
-						     <img class="img-responsive" src="images/pic.jpg" style="top: 0px;" alt=" " /><div class="b-wrapper"><h2 class="b-animate b-from-left    b-delay03 "><img src="images/plus.png" alt="" style="top: 0px;"></h2>
-						  </div></a>
-							<h5>大山里的健康小课桌</h5>
-							<span>中国社会福利基金会</span>
-							<p>拍这张照片的时候，交梨小学的同学们正在上讨论课后作业。一直趴在破旧的课桌椅上写作业的他们，字终于不再歪歪倒倒了，终于可以在平整的桌面写字了</p>
-							<!--<a href="#" class="btn  btn-1c btn1 btn-1d">MORE INFO</a>						-->
-						</div>
-						<div class="col-md-4 ser-in">
-						<a href="single.html" class="b-link-stripe b-animate-go  thickbox"><div class="b-line b-line1"></div><div class="b-line b-line2"></div><div class="b-line b-line3"></div><div class="b-line b-line4"></div><div class="b-line b-line5"></div>
-						     <img class="img-responsive" src="images/pic1.jpg" style="top: 0px;" alt=" " /><div class="b-wrapper"><h2 class="b-animate b-from-left    b-delay03 "><img src="images/plus.png" alt="" style="top: 0px;"></h2>
-						  </div></a>
-							<h5>给困境儿童送面包</h5>
-							<span>中国儿童少年基金会</span>
-							<p>HELLO小孩”爱心套餐是中国儿童少年基金会面向广大贫困家庭儿童和留守儿童以及因自然灾害、突发事故的儿童于2015年底启动的公益项目。包括日常学生套餐和灾后应急套餐两款，根据季节不同，又分为春夏和秋冬两个搭配方案</p>
-						</div>
-						<div class="col-md-4 ser-in">
-							<a href="single.html" class="b-link-stripe b-animate-go  thickbox"><div class="b-line b-line1"></div><div class="b-line b-line2"></div><div class="b-line b-line3"></div><div class="b-line b-line4"></div><div class="b-line b-line5"></div>
-						     <img class="img-responsive" src="images/pic2.jpg" style="top: 0px;" alt=" " /><div class="b-wrapper"><h2 class="b-animate b-from-left    b-delay03 "><img src="images/plus.png" alt="" style="top: 0px;"></h2>
-						  </div></a>
-							<h5>爱的分贝 救救耳朵</h5>
-							<span>中华思源工程扶贫基金会</span>
-							<p>2017年9月1日，极重度听力障碍的康康成为了一名一年级的新生，康康妈妈像所有的学生家长一样，开始每天检查康康作业督促他学习；跟其他妈妈不一样是，她要不时开导康康：耳蜗就像眼镜，不能摘，摘了就听不到了。因为康康现在就读于普通小学，他非常渴望和同学们一样不用带他的“小耳朵”去上学</p>
-						</div>
-					</div>
-				</div>
-			</div>
+    </div>
+</div>
+<!---->
 
-        <!--扶贫救灾-->
-        <div class="container">
-            <a href="#" class="btn btn-1c">扶贫救灾</a>
-            <a href="#" class="all" >查看全部</a>
-        </div>
+
+<!--content-->
+<div class="content">
+    <!--教育助学-->
+    <div class="container">
+        <a href="#" class="btn btn-1c">教育助学</a>
+        <a href="#" class="all" >查看全部</a>
+    </div>
         <div class="services-in">
             <div class="container">
                 <div class="service-grid">
                     <div class="col-md-4 ser-in">
-                        <a href="single.html" class="b-link-stripe b-animate-go  thickbox"><div class="b-line b-line1"></div><div class="b-line b-line2"></div><div class="b-line b-line3"></div><div class="b-line b-line4"></div><div class="b-line b-line5"></div>
+                        <a href="projects/DaShanLiDeJianKangXiaoKeZhuo/main.html" class="b-link-stripe b-animate-go  thickbox"><div class="b-line b-line1"></div><div class="b-line b-line2"></div><div class="b-line b-line3"></div><div class="b-line b-line4"></div><div class="b-line b-line5"></div>
                             <img class="img-responsive" src="images/pic.jpg" style="top: 0px;" alt=" " /><div class="b-wrapper"><h2 class="b-animate b-from-left    b-delay03 "><img src="images/plus.png" alt="" style="top: 0px;"></h2>
-                            </div></a>
+                        </div></a>
                         <h5>大山里的健康小课桌</h5>
                         <span>中国社会福利基金会</span>
                         <p>拍这张照片的时候，交梨小学的同学们正在上讨论课后作业。一直趴在破旧的课桌椅上写作业的他们，字终于不再歪歪倒倒了，终于可以在平整的桌面写字了</p>
                         <!--<a href="#" class="btn  btn-1c btn1 btn-1d">MORE INFO</a>						-->
                     </div>
                     <div class="col-md-4 ser-in">
-                        <a href="single.html" class="b-link-stripe b-animate-go  thickbox"><div class="b-line b-line1"></div><div class="b-line b-line2"></div><div class="b-line b-line3"></div><div class="b-line b-line4"></div><div class="b-line b-line5"></div>
+                    <a href="projects/GeiKunJingErTongSongShengHuoBao/main.html" class="b-link-stripe b-animate-go  thickbox"><div class="b-line b-line1"></div><div class="b-line b-line2"></div><div class="b-line b-line3"></div><div class="b-line b-line4"></div><div class="b-line b-line5"></div>
                             <img class="img-responsive" src="images/pic1.jpg" style="top: 0px;" alt=" " /><div class="b-wrapper"><h2 class="b-animate b-from-left    b-delay03 "><img src="images/plus.png" alt="" style="top: 0px;"></h2>
-                            </div></a>
+                        </div></a>
                         <h5>给困境儿童送面包</h5>
                         <span>中国儿童少年基金会</span>
                         <p>HELLO小孩”爱心套餐是中国儿童少年基金会面向广大贫困家庭儿童和留守儿童以及因自然灾害、突发事故的儿童于2015年底启动的公益项目。包括日常学生套餐和灾后应急套餐两款，根据季节不同，又分为春夏和秋冬两个搭配方案</p>
                     </div>
                     <div class="col-md-4 ser-in">
-                        <a href="single.html" class="b-link-stripe b-animate-go  thickbox"><div class="b-line b-line1"></div><div class="b-line b-line2"></div><div class="b-line b-line3"></div><div class="b-line b-line4"></div><div class="b-line b-line5"></div>
+                        <a href="projects/AiDeFenBeiJiuJiuErDuo/main.html" class="b-link-stripe b-animate-go  thickbox"><div class="b-line b-line1"></div><div class="b-line b-line2"></div><div class="b-line b-line3"></div><div class="b-line b-line4"></div><div class="b-line b-line5"></div>
                             <img class="img-responsive" src="images/pic2.jpg" style="top: 0px;" alt=" " /><div class="b-wrapper"><h2 class="b-animate b-from-left    b-delay03 "><img src="images/plus.png" alt="" style="top: 0px;"></h2>
-                            </div></a>
+                        </div></a>
                         <h5>爱的分贝 救救耳朵</h5>
                         <span>中华思源工程扶贫基金会</span>
                         <p>2017年9月1日，极重度听力障碍的康康成为了一名一年级的新生，康康妈妈像所有的学生家长一样，开始每天检查康康作业督促他学习；跟其他妈妈不一样是，她要不时开导康康：耳蜗就像眼镜，不能摘，摘了就听不到了。因为康康现在就读于普通小学，他非常渴望和同学们一样不用带他的“小耳朵”去上学</p>
@@ -213,83 +176,119 @@
             </div>
         </div>
 
-
-        <!--医疗救助-->
+    <!--扶贫救灾-->
+    <div class="container">
+        <a href="#" class="btn btn-1c">扶贫救灾</a>
+        <a href="#" class="all" >查看全部</a>
+    </div>
+    <div class="services-in">
         <div class="container">
-            <a href="#" class="btn btn-1c">医疗救助</a>
-            <a href="#" class="all" >查看全部</a>
-        </div>
-        <div class="services-in">
-            <div class="container">
-                <div class="service-grid">
-                    <div class="col-md-4 ser-in">
-                        <a href="single.html" class="b-link-stripe b-animate-go  thickbox"><div class="b-line b-line1"></div><div class="b-line b-line2"></div><div class="b-line b-line3"></div><div class="b-line b-line4"></div><div class="b-line b-line5"></div>
-                            <img class="img-responsive" src="images/pic.jpg" style="top: 0px;" alt=" " /><div class="b-wrapper"><h2 class="b-animate b-from-left    b-delay03 "><img src="images/plus.png" alt="" style="top: 0px;"></h2>
-                            </div></a>
-                        <h5>大山里的健康小课桌</h5>
-                        <span>中国社会福利基金会</span>
-                        <p>拍这张照片的时候，交梨小学的同学们正在上讨论课后作业。一直趴在破旧的课桌椅上写作业的他们，字终于不再歪歪倒倒了，终于可以在平整的桌面写字了</p>
-                        <!--<a href="#" class="btn  btn-1c btn1 btn-1d">MORE INFO</a>						-->
-                    </div>
-                    <div class="col-md-4 ser-in">
-                        <a href="single.html" class="b-link-stripe b-animate-go  thickbox"><div class="b-line b-line1"></div><div class="b-line b-line2"></div><div class="b-line b-line3"></div><div class="b-line b-line4"></div><div class="b-line b-line5"></div>
-                            <img class="img-responsive" src="images/pic1.jpg" style="top: 0px;" alt=" " /><div class="b-wrapper"><h2 class="b-animate b-from-left    b-delay03 "><img src="images/plus.png" alt="" style="top: 0px;"></h2>
-                            </div></a>
-                        <h5>给困境儿童送面包</h5>
-                        <span>中国儿童少年基金会</span>
-                        <p>HELLO小孩”爱心套餐是中国儿童少年基金会面向广大贫困家庭儿童和留守儿童以及因自然灾害、突发事故的儿童于2015年底启动的公益项目。包括日常学生套餐和灾后应急套餐两款，根据季节不同，又分为春夏和秋冬两个搭配方案</p>
-                    </div>
-                    <div class="col-md-4 ser-in">
-                        <a href="single.html" class="b-link-stripe b-animate-go  thickbox"><div class="b-line b-line1"></div><div class="b-line b-line2"></div><div class="b-line b-line3"></div><div class="b-line b-line4"></div><div class="b-line b-line5"></div>
-                            <img class="img-responsive" src="images/pic2.jpg" style="top: 0px;" alt=" " /><div class="b-wrapper"><h2 class="b-animate b-from-left    b-delay03 "><img src="images/plus.png" alt="" style="top: 0px;"></h2>
-                            </div></a>
-                        <h5>爱的分贝 救救耳朵</h5>
-                        <span>中华思源工程扶贫基金会</span>
-                        <p>2017年9月1日，极重度听力障碍的康康成为了一名一年级的新生，康康妈妈像所有的学生家长一样，开始每天检查康康作业督促他学习；跟其他妈妈不一样是，她要不时开导康康：耳蜗就像眼镜，不能摘，摘了就听不到了。因为康康现在就读于普通小学，他非常渴望和同学们一样不用带他的“小耳朵”去上学</p>
-                    </div>
+            <div class="service-grid">
+                <div class="col-md-4 ser-in">
+                    <a href="projects/DaShanLiDeJianKangXiaoKeZhuo/main.html" class="b-link-stripe b-animate-go  thickbox"><div class="b-line b-line1"></div><div class="b-line b-line2"></div><div class="b-line b-line3"></div><div class="b-line b-line4"></div><div class="b-line b-line5"></div>
+                        <img class="img-responsive" src="images/pic.jpg" style="top: 0px;" alt=" " /><div class="b-wrapper"><h2 class="b-animate b-from-left    b-delay03 "><img src="images/plus.png" alt="" style="top: 0px;"></h2>
+                        </div></a>
+                    <h5>大山里的健康小课桌</h5>
+                    <span>中国社会福利基金会</span>
+                    <p>拍这张照片的时候，交梨小学的同学们正在上讨论课后作业。一直趴在破旧的课桌椅上写作业的他们，字终于不再歪歪倒倒了，终于可以在平整的桌面写字了</p>
+                    <!--<a href="#" class="btn  btn-1c btn1 btn-1d">MORE INFO</a>						-->
+                </div>
+                <div class="col-md-4 ser-in">
+                    <a href="projects/GeiKunJingErTongSongShengHuoBao/main.html" class="b-link-stripe b-animate-go  thickbox"><div class="b-line b-line1"></div><div class="b-line b-line2"></div><div class="b-line b-line3"></div><div class="b-line b-line4"></div><div class="b-line b-line5"></div>
+                        <img class="img-responsive" src="images/pic1.jpg" style="top: 0px;" alt=" " /><div class="b-wrapper"><h2 class="b-animate b-from-left    b-delay03 "><img src="images/plus.png" alt="" style="top: 0px;"></h2>
+                        </div></a>
+                    <h5>给困境儿童送面包</h5>
+                    <span>中国儿童少年基金会</span>
+                    <p>HELLO小孩”爱心套餐是中国儿童少年基金会面向广大贫困家庭儿童和留守儿童以及因自然灾害、突发事故的儿童于2015年底启动的公益项目。包括日常学生套餐和灾后应急套餐两款，根据季节不同，又分为春夏和秋冬两个搭配方案</p>
+                </div>
+                <div class="col-md-4 ser-in">
+                    <a href="projects/AiDeFenBeiJiuJiuErDuo/main.html" class="b-link-stripe b-animate-go  thickbox"><div class="b-line b-line1"></div><div class="b-line b-line2"></div><div class="b-line b-line3"></div><div class="b-line b-line4"></div><div class="b-line b-line5"></div>
+                        <img class="img-responsive" src="images/pic2.jpg" style="top: 0px;" alt=" " /><div class="b-wrapper"><h2 class="b-animate b-from-left    b-delay03 "><img src="images/plus.png" alt="" style="top: 0px;"></h2>
+                        </div></a>
+                    <h5>爱的分贝 救救耳朵</h5>
+                    <span>中华思源工程扶贫基金会</span>
+                    <p>2017年9月1日，极重度听力障碍的康康成为了一名一年级的新生，康康妈妈像所有的学生家长一样，开始每天检查康康作业督促他学习；跟其他妈妈不一样是，她要不时开导康康：耳蜗就像眼镜，不能摘，摘了就听不到了。因为康康现在就读于普通小学，他非常渴望和同学们一样不用带他的“小耳朵”去上学</p>
                 </div>
             </div>
         </div>
+    </div>
 
 
-        <!--其他-->
+    <!--医疗救助-->
+    <div class="container">
+        <a href="#" class="btn btn-1c">医疗救助</a>
+        <a href="#" class="all" >查看全部</a>
+    </div>
+    <div class="services-in">
         <div class="container">
-            <a href="#" class="btn btn-1c">其他</a>
-            <a href="#" class="all" >查看全部</a>
-        </div>
-        <div class="services-in">
-            <div class="container">
-                <div class="service-grid">
-                    <div class="col-md-4 ser-in">
-                        <a href="single.html" class="b-link-stripe b-animate-go  thickbox"><div class="b-line b-line1"></div><div class="b-line b-line2"></div><div class="b-line b-line3"></div><div class="b-line b-line4"></div><div class="b-line b-line5"></div>
-                            <img class="img-responsive" src="images/pic.jpg" style="top: 0px;" alt=" " /><div class="b-wrapper"><h2 class="b-animate b-from-left    b-delay03 "><img src="images/plus.png" alt="" style="top: 0px;"></h2>
-                            </div></a>
-                        <h5>大山里的健康小课桌</h5>
-                        <span>中国社会福利基金会</span>
-                        <p>拍这张照片的时候，交梨小学的同学们正在上讨论课后作业。一直趴在破旧的课桌椅上写作业的他们，字终于不再歪歪倒倒了，终于可以在平整的桌面写字了</p>
-                        <!--<a href="#" class="btn  btn-1c btn1 btn-1d">MORE INFO</a>						-->
-                    </div>
-                    <div class="col-md-4 ser-in">
-                        <a href="single.html" class="b-link-stripe b-animate-go  thickbox"><div class="b-line b-line1"></div><div class="b-line b-line2"></div><div class="b-line b-line3"></div><div class="b-line b-line4"></div><div class="b-line b-line5"></div>
-                            <img class="img-responsive" src="images/pic1.jpg" style="top: 0px;" alt=" " /><div class="b-wrapper"><h2 class="b-animate b-from-left    b-delay03 "><img src="images/plus.png" alt="" style="top: 0px;"></h2>
-                            </div></a>
-                        <h5>给困境儿童送面包</h5>
-                        <span>中国儿童少年基金会</span>
-                        <p>HELLO小孩”爱心套餐是中国儿童少年基金会面向广大贫困家庭儿童和留守儿童以及因自然灾害、突发事故的儿童于2015年底启动的公益项目。包括日常学生套餐和灾后应急套餐两款，根据季节不同，又分为春夏和秋冬两个搭配方案</p>
-                    </div>
-                    <div class="col-md-4 ser-in">
-                        <a href="single.html" class="b-link-stripe b-animate-go  thickbox"><div class="b-line b-line1"></div><div class="b-line b-line2"></div><div class="b-line b-line3"></div><div class="b-line b-line4"></div><div class="b-line b-line5"></div>
-                            <img class="img-responsive" src="images/pic2.jpg" style="top: 0px;" alt=" " /><div class="b-wrapper"><h2 class="b-animate b-from-left    b-delay03 "><img src="images/plus.png" alt="" style="top: 0px;"></h2>
-                            </div></a>
-                        <h5>爱的分贝 救救耳朵</h5>
-                        <span>中华思源工程扶贫基金会</span>
-                        <p>2017年9月1日，极重度听力障碍的康康成为了一名一年级的新生，康康妈妈像所有的学生家长一样，开始每天检查康康作业督促他学习；跟其他妈妈不一样是，她要不时开导康康：耳蜗就像眼镜，不能摘，摘了就听不到了。因为康康现在就读于普通小学，他非常渴望和同学们一样不用带他的“小耳朵”去上学</p>
-                    </div>
+            <div class="service-grid">
+                <div class="col-md-4 ser-in">
+                    <a href="projects/DaShanLiDeJianKangXiaoKeZhuo/main.html" class="b-link-stripe b-animate-go  thickbox"><div class="b-line b-line1"></div><div class="b-line b-line2"></div><div class="b-line b-line3"></div><div class="b-line b-line4"></div><div class="b-line b-line5"></div>
+                        <img class="img-responsive" src="images/pic.jpg" style="top: 0px;" alt=" " /><div class="b-wrapper"><h2 class="b-animate b-from-left    b-delay03 "><img src="images/plus.png" alt="" style="top: 0px;"></h2>
+                        </div></a>
+                    <h5>大山里的健康小课桌</h5>
+                    <span>中国社会福利基金会</span>
+                    <p>拍这张照片的时候，交梨小学的同学们正在上讨论课后作业。一直趴在破旧的课桌椅上写作业的他们，字终于不再歪歪倒倒了，终于可以在平整的桌面写字了</p>
+                    <!--<a href="#" class="btn  btn-1c btn1 btn-1d">MORE INFO</a>						-->
+                </div>
+                <div class="col-md-4 ser-in">
+                    <a href="projects/GeiKunJingErTongSongShengHuoBao/main.html" class="b-link-stripe b-animate-go  thickbox"><div class="b-line b-line1"></div><div class="b-line b-line2"></div><div class="b-line b-line3"></div><div class="b-line b-line4"></div><div class="b-line b-line5"></div>
+                        <img class="img-responsive" src="images/pic1.jpg" style="top: 0px;" alt=" " /><div class="b-wrapper"><h2 class="b-animate b-from-left    b-delay03 "><img src="images/plus.png" alt="" style="top: 0px;"></h2>
+                        </div></a>
+                    <h5>给困境儿童送面包</h5>
+                    <span>中国儿童少年基金会</span>
+                    <p>HELLO小孩”爱心套餐是中国儿童少年基金会面向广大贫困家庭儿童和留守儿童以及因自然灾害、突发事故的儿童于2015年底启动的公益项目。包括日常学生套餐和灾后应急套餐两款，根据季节不同，又分为春夏和秋冬两个搭配方案</p>
+                </div>
+                <div class="col-md-4 ser-in">
+                    <a href="projects/AiDeFenBeiJiuJiuErDuo/main.html" class="b-link-stripe b-animate-go  thickbox"><div class="b-line b-line1"></div><div class="b-line b-line2"></div><div class="b-line b-line3"></div><div class="b-line b-line4"></div><div class="b-line b-line5"></div>
+                        <img class="img-responsive" src="images/pic2.jpg" style="top: 0px;" alt=" " /><div class="b-wrapper"><h2 class="b-animate b-from-left    b-delay03 "><img src="images/plus.png" alt="" style="top: 0px;"></h2>
+                        </div></a>
+                    <h5>爱的分贝 救救耳朵</h5>
+                    <span>中华思源工程扶贫基金会</span>
+                    <p>2017年9月1日，极重度听力障碍的康康成为了一名一年级的新生，康康妈妈像所有的学生家长一样，开始每天检查康康作业督促他学习；跟其他妈妈不一样是，她要不时开导康康：耳蜗就像眼镜，不能摘，摘了就听不到了。因为康康现在就读于普通小学，他非常渴望和同学们一样不用带他的“小耳朵”去上学</p>
                 </div>
             </div>
         </div>
+    </div>
 
-	</div>
+
+    <!--其他-->
+    <div class="container">
+        <a href="#" class="btn btn-1c">其他</a>
+        <a href="#" class="all" >查看全部</a>
+    </div>
+    <div class="services-in">
+        <div class="container">
+            <div class="service-grid">
+                <div class="col-md-4 ser-in">
+                    <a href="projects/DaShanLiDeJianKangXiaoKeZhuo/main.html" class="b-link-stripe b-animate-go  thickbox"><div class="b-line b-line1"></div><div class="b-line b-line2"></div><div class="b-line b-line3"></div><div class="b-line b-line4"></div><div class="b-line b-line5"></div>
+                        <img class="img-responsive" src="images/pic.jpg" style="top: 0px;" alt=" " /><div class="b-wrapper"><h2 class="b-animate b-from-left    b-delay03 "><img src="images/plus.png" alt="" style="top: 0px;"></h2>
+                        </div></a>
+                    <h5>大山里的健康小课桌</h5>
+                    <span>中国社会福利基金会</span>
+                    <p>拍这张照片的时候，交梨小学的同学们正在上讨论课后作业。一直趴在破旧的课桌椅上写作业的他们，字终于不再歪歪倒倒了，终于可以在平整的桌面写字了</p>
+                    <!--<a href="#" class="btn  btn-1c btn1 btn-1d">MORE INFO</a>						-->
+                </div>
+                <div class="col-md-4 ser-in">
+                    <a href="projects/GeiKunJingErTongSongShengHuoBao/main.html" class="b-link-stripe b-animate-go  thickbox"><div class="b-line b-line1"></div><div class="b-line b-line2"></div><div class="b-line b-line3"></div><div class="b-line b-line4"></div><div class="b-line b-line5"></div>
+                        <img class="img-responsive" src="images/pic1.jpg" style="top: 0px;" alt=" " /><div class="b-wrapper"><h2 class="b-animate b-from-left    b-delay03 "><img src="images/plus.png" alt="" style="top: 0px;"></h2>
+                        </div></a>
+                    <h5>给困境儿童送面包</h5>
+                    <span>中国儿童少年基金会</span>
+                    <p>HELLO小孩”爱心套餐是中国儿童少年基金会面向广大贫困家庭儿童和留守儿童以及因自然灾害、突发事故的儿童于2015年底启动的公益项目。包括日常学生套餐和灾后应急套餐两款，根据季节不同，又分为春夏和秋冬两个搭配方案</p>
+                </div>
+                <div class="col-md-4 ser-in">
+                    <a href="projects/AiDeFenBeiJiuJiuErDuo/main.html" class="b-link-stripe b-animate-go  thickbox"><div class="b-line b-line1"></div><div class="b-line b-line2"></div><div class="b-line b-line3"></div><div class="b-line b-line4"></div><div class="b-line b-line5"></div>
+                        <img class="img-responsive" src="images/pic2.jpg" style="top: 0px;" alt=" " /><div class="b-wrapper"><h2 class="b-animate b-from-left    b-delay03 "><img src="images/plus.png" alt="" style="top: 0px;"></h2>
+                        </div></a>
+                    <h5>爱的分贝 救救耳朵</h5>
+                    <span>中华思源工程扶贫基金会</span>
+                    <p>2017年9月1日，极重度听力障碍的康康成为了一名一年级的新生，康康妈妈像所有的学生家长一样，开始每天检查康康作业督促他学习；跟其他妈妈不一样是，她要不时开导康康：耳蜗就像眼镜，不能摘，摘了就听不到了。因为康康现在就读于普通小学，他非常渴望和同学们一样不用带他的“小耳朵”去上学</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 

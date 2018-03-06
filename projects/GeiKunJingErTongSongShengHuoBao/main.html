@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Home</title>
+<link href="../../css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<script src="../../js/jquery.min.js"></script>
+<script src="../../js/popup.js"></script>
+<link href="../../css/style.css" rel="stylesheet" type="text/css" media="all" />
+<link href="../../css/popup.css" rel="stylesheet" type="text/css" media="all" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+</head>
+<body>
+
+<!--login and register-->
+<div class="header container">
+    <div class="logo">
+        <a href="../../index.html"><img src="../../images/logo.png" alt="click this to homepage" /></a>
+    </div>
+    <div class="top-nav">
+        <nav class="main_nav">
+            <ul>
+            <li><a href="#0" class="scroll">登录</a></li>
+            <li><a href="#0" class="scroll">注册</a></li>
+        </ul>
+        </nav>
+    </div>
+
+
+    <div class="cd-user-modal">
+        <div class="cd-user-modal-container">
+            <ul class="cd-switcher">
+                <li><a href="#0">用户登录</a></li>
+                <li><a href="#0">注册新用户</a></li>
+            </ul>
+            <!-- 登录表单 -->
+            <div id="cd-login"> 
+                <form class="cd-form">
+                    <p class="fieldset">
+                        <label class="image-replace cd-username" for="signin-username">用户名</label>
+                        <input class="full-width has-padding has-border" id="signin-username" type="text" placeholder="输入用户名">
+                    </p>
+
+                    <p class="fieldset">
+                        <label class="image-replace cd-password" for="signin-password">密码</label>
+                        <input class="full-width has-padding has-border" id="signin-password" type="text"  placeholder="输入密码">
+                    </p>
+
+                    <p class="fieldset">
+                        <input type="checkbox" id="remember-me" checked>
+                        <label for="remember-me">记住登录状态</label>
+                    </p>
+
+                    <p class="fieldset">
+                        <input class="full-width2" type="submit" value="登 录">
+                    </p>
+                </form>
+            </div>
+            <!-- 注册表单 -->
+            <div id="cd-signup"> 
+                <form class="cd-form">
+                    <p class="fieldset">
+                        <label class="image-replace cd-username" for="signup-username">用户名</label>
+                        <input class="full-width has-padding has-border" id="signup-username" type="text" placeholder="输入用户名">
+                    </p>
+
+                    <p class="fieldset">
+                        <label class="image-replace cd-email" for="signup-email">邮箱</label>
+                        <input class="full-width has-padding has-border" id="signup-email" type="email" placeholder="输入mail">
+                    </p>
+
+                    <p class="fieldset">
+                        <label class="image-replace cd-password" for="signup-password">密码</label>
+                        <input class="full-width has-padding has-border" id="signup-password" type="text"  placeholder="输入密码">
+                    </p>
+
+                    <p class="fieldset">
+                        <input type="checkbox" id="accept-terms">
+                        <label for="accept-terms">我已阅读并同意 <a href="#0">用户协议</a></label>
+                    </p>
+
+                    <p class="fieldset">
+                        <input class="full-width2" type="submit" value="注册新用户">
+                    </p>
+                </form>
+            </div>
+
+            <a href="#0" class="cd-close-form">关闭</a>
+        </div>
+    </div>
+</div>
+<!---->
+
+<!-- styles for the page -->
+<style>
+.project_page_metadata h6{
+    padding: 0.5em 0 0 0; 
+    font-size: 0.9em; 
+    text-align: center;
+    font-weight:bold; 
+}
+.project_page_metadata h1{
+    padding: 0 0 0 1em; 
+    font-size: 2.4em; 
+    font-weight:bold; 
+}
+.project_page_metadata p{
+    padding: 1em 0 0 2em;
+    font-size: 1.2em;
+    line-height: 1em;
+    font-weight:bold;
+}
+
+.project_page_switch_content btn{
+	border: none;
+	font-family: inherit;
+	color: inherit;
+	display: inline-block;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	outline: none;
+	position: relative;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+	border-radius:7px !important;
+	text-decoration: none;
+	border: 2px solid #ff0505;
+	/*#3c763dab*/
+	font-weight: 900;
+	background:#ff0505;
+	color:#fff;
+	z-index:1;
+	margin-left: 0px;
+	margin-bottom: 0px;
+	font-size:1.5em;
+}
+.project_page_switch_content btn:after {
+	content: '';
+	position: absolute;
+	z-index: -1;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+	color:#000000;
+}
+
+.project_page_main_story h1{
+    padding: 0 0 0.2em 0;
+    width: 100%;
+    font-size: 1.7em; 
+    font-weight:600; 
+}
+.project_page_main_story p{
+    text-indent: 2em;
+    padding: 0 0 0.5em 0;
+    width: 90%;
+    font-size: 1.3em; 
+    line-height: 150%
+}
+.project_page_main_story img{
+    padding: 1em 0 1em 0;
+    width: 90%
+}
+.project_page_progress li{
+    background-color: #f0f4f7;
+	position: relative;
+	border-color: #eff5f5;
+	margin-bottom: 20px;
+	padding: 10px 20px;
+}
+.project_page_progress li .listIcon{
+	position: absolute;
+	top: 14px;
+	left: -28px;
+	_left: -48px;
+	display: inline-block;
+	height: 14px;
+	width: 30px;
+	background: url('/images/progress_list_icon.png') no-repeat;
+}
+</style>
+
+<!-- 本页的主体 -->
+
+<!-- 临时空行，后面再调整 -->
+<br><br><br><br>
+<div class="content">
+    <div class="container">
+        <!-- 页面左边故事主体 -->
+        <div class="col-md-9 ">
+
+            <!-- 项目封面图和元数据 -->
+            <div class="row">
+                <div class="project_page_metadata">
+                    <!-- cover image -->
+                    <div class="col-md-4 ">
+                        <!-- insert image, scaled to column width -->
+                        <img src="./images/cover.jpg" width="100%" style="margin:1em 0 0 0;">
+                        <h6>发布机构：中国儿童少年基金会</h6>
+                    </div>                   
+                    <!-- meta data -->
+                    <div class="col-md-7">
+                        <h1>给困境儿童送生活包</h1>
+                        <p>已募善款：8848元</p>
+                        <p>参捐人数：11</p>
+                        <p>项目时间：2018年1月32日 至 2018年2月29日</p>
+                        <a href="#" style="background:#da7400; font-size: 1em; margin: 0 0 0 0;">
+                            <h1>我来捐助</h1>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-1 ">
+                </div>
+            </div>
+
+            <!-- 在介绍和进展间切换，暂未实现 -->
+            <!-- <br><br>
+            <div class="row">
+                <div class="project_page_switch_content">
+                    <a href="#" class="btn btn-1c" style="font-size: 1.5em; margin: 0 0 0 0">项目介绍</a>
+                    <a href="#" class="btn btn-1c" style="font-size: 1.5em; margin: 0 0 0 0">项目进展</a>
+                </div>
+            </div> -->
+
+            <!-- 项目故事的主体，文字和图 -->
+            <div class="row">
+                <div class="project_page_main_story">
+                    <br>
+                    <p>HELLO小孩”爱心套餐是中国儿童少年基金会面向广大贫困家庭儿童和留守儿童以及因自然灾害、突发事故的儿童于2015年底启动的公益项目。包括日常学生套餐和灾后应急套餐两款，根据季节不同，又分为春夏和秋冬两个搭配方案。</p>
+                    <img src="images/story0.jpg" alt="" />
+                    <p>日常套餐包括彩笔、口琴、帽子手套、健康应急包等16种学习生活必需品，灾后应急套餐在日常套餐的基础上，又增加了香皂等灾后卫生防疫必需品以及书包等学习用品，能够帮助孩子们顺利渡过安置期。</p>
+                    <img src="images/story1.jpg" alt="" />
+                    <p>HELLO小孩”爱心套餐给贫困家庭儿童、留守儿童带来社会各界的温暖关怀，套餐里的文体生活用品能为他们的生活增添一抹亮丽的色彩。截至2016年，“HELLO小孩”共为贫困留守儿童、自然灾害受灾家庭、贫困弱势儿童发放5万余份爱心套餐。</p>
+                    <img src="images/story2.jpg" alt="" />
+                    <p>HELLO小孩执行两年以来，收到了许许多多受助儿童的感谢信，以及孩子们用自己稚嫩的画笔画出来的美好生活。孩子们在感谢信中说到：你们的爱心资助，让我们感受到你们的善良和仁爱，也让我们深深的感受了来自社会大家庭的温暖，看到了生活的光明和希望。我们知道，每一元善款都来之不易，你们节省下的善款汇聚成热切的爱心，温暖着每一个受资助的孩子的心。</p>
+                    <h1>【发票获取方式】</h1>
+                    <p>中国儿童少年基金会将为捐款金额100元（含）以上开具捐赠收据，需要捐赠收据的蚂蚁金服公益爱心用户须将(捐赠人姓名、开票抬头、金额、截图、电话、地址等信息发至zhongchou@cctf.org.cn。感恩您的信任和理解。</p>
+                    <h1>【执行机构简介】</h1>
+                    <p>中国儿基会是我国第一家通过募集社会资金，专注于发展儿童少年教育公益事业的社会团体，是民政部评定的5A级基金会。以“为抚育、培养、教育儿童少年，辅助国家发展儿童少年教育福利事业”的宗旨。</p>
+                    <h1>【项目备案说明】</h1>
+                    <p>该项目已在【慈善中国】备案，公开募捐活动备案编号：531000005000090795A17006，您可登录【慈善中国】查询。 慈善中国，即全国慈善信息公开平台，于2017年9月4日正式开通，是民政部依据《慈善法》关于“信息公开”要求而建设的统一信息平台，用于慈善组织、慈善信托受托人等参与主体面向社会公开慈善信息。</p>
+                </div>
+            </div>
+
+            <!-- 项目进展 -->
+            <div class="row">
+                <div class="project_page_progress">
+                    <ul>
+                        <li>
+                            <span class="listIcon"></span>
+                            暂时没有<br>
+                            暂时没有<br>
+                            暂时没有<br>
+                        </li>
+                        <li>
+                            暂时没有<br>
+                            暂时没有<br>
+                            暂时没有<br>
+                        </li>
+                        <li>
+                            暂时没有<br>
+                            暂时没有<br>
+                            暂时没有<br>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-3">
+            <div class="store-right">
+                <h6> 推荐项目</h6>
+                <ul class="store-men">
+                    <li><a href="../DaShanLiDeJianKangXiaoKeZhuo/main.html"><span> </span>
+                        [医疗救助] 大山里的健康小课桌 </a>
+                        <p>拍这张照片的时候，交梨小学的同学们正在上讨论课后作业。一直趴在破旧的课桌椅上写作业的他们，字终于不再歪歪倒倒了，终于可以在平整的桌面写字了</p>
+                    </li>
+                    <li class="last"><a href="../AiDeFenBeiJiuJiuErDuo/main.html"><span> </span>
+                        [其他] 爱的分贝 救救耳朵 </a>
+                        <p>2017年9月1日，极重度听力障碍的康康成为了一名一年级的新生，康康妈妈像所有的学生家长一样，开始每天检查康康作业督促他学习；跟其他妈妈不一样是，她要不时开导康康：耳蜗就像眼镜，不能摘，摘了就听不到了。因为康康现在就读于普通小学，他非常渴望和同学们一样不用带他的“小耳朵”去上学</p>
+                    </li>
+                </ul>
+            </div>									
+        </div>
+        <div class="clearfix"> </div>
+        <div class="row">
+            <br><br><br>
+        </div>
+    </div>
+</div>
+<!-- contents end -->
+
+
+
+
+<div class="footer">
+    <div class="container">
+        <ul>
+            <li><a href="#" >联系我们</a></li>
+            <li>|</li>
+            <li><a href="#" >关于境界的彼方</a> </li>
+            <li>|</li>
+            <li><a href="./manage/manage_approve_program.html">管理中心</a></li>
+            <li>|</li>
+            <li><a href="#" >意见反馈</a> </li>
+        </ul>
+        <span class="drop"> </span>
+        <p>境界の彼方 <span>S.E.U.</span> Suzhou, P.R.China</p>
+        <p class="footer-class">Copyright &copy; 1Q84.</p>
+        <ul class="social-icons">
+            <li class="twitter"><a href="#"><span> </span></a></li>
+            <li class="gmail"><a href="#"><span> </span></a></li>
+            <li class="print"><a href="#"><span> </span></a></li>
+        </ul>
+    </div>
+</div>
+
+</body>
+</html>

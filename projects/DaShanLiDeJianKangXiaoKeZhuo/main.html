@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Home</title>
+<link href="../../css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<script src="../../js/jquery.min.js"></script>
+<script src="../../js/popup.js"></script>
+<link href="../../css/style.css" rel="stylesheet" type="text/css" media="all" />
+<link href="../../css/popup.css" rel="stylesheet" type="text/css" media="all" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+</head>
+<body>
+
+<!--login and register-->
+<div class="header container">
+    <div class="logo">
+        <a href="../../index.html"><img src="../../images/logo.png" alt="click this to homepage" /></a>
+    </div>
+    <div class="top-nav">
+        <nav class="main_nav">
+            <ul>
+            <li><a href="#0" class="scroll">登录</a></li>
+            <li><a href="#0" class="scroll">注册</a></li>
+        </ul>
+        </nav>
+    </div>
+
+
+    <div class="cd-user-modal">
+        <div class="cd-user-modal-container">
+            <ul class="cd-switcher">
+                <li><a href="#0">用户登录</a></li>
+                <li><a href="#0">注册新用户</a></li>
+            </ul>
+            <!-- 登录表单 -->
+            <div id="cd-login"> 
+                <form class="cd-form">
+                    <p class="fieldset">
+                        <label class="image-replace cd-username" for="signin-username">用户名</label>
+                        <input class="full-width has-padding has-border" id="signin-username" type="text" placeholder="输入用户名">
+                    </p>
+
+                    <p class="fieldset">
+                        <label class="image-replace cd-password" for="signin-password">密码</label>
+                        <input class="full-width has-padding has-border" id="signin-password" type="text"  placeholder="输入密码">
+                    </p>
+
+                    <p class="fieldset">
+                        <input type="checkbox" id="remember-me" checked>
+                        <label for="remember-me">记住登录状态</label>
+                    </p>
+
+                    <p class="fieldset">
+                        <input class="full-width2" type="submit" value="登 录">
+                    </p>
+                </form>
+            </div>
+            <!-- 注册表单 -->
+            <div id="cd-signup"> 
+                <form class="cd-form">
+                    <p class="fieldset">
+                        <label class="image-replace cd-username" for="signup-username">用户名</label>
+                        <input class="full-width has-padding has-border" id="signup-username" type="text" placeholder="输入用户名">
+                    </p>
+
+                    <p class="fieldset">
+                        <label class="image-replace cd-email" for="signup-email">邮箱</label>
+                        <input class="full-width has-padding has-border" id="signup-email" type="email" placeholder="输入mail">
+                    </p>
+
+                    <p class="fieldset">
+                        <label class="image-replace cd-password" for="signup-password">密码</label>
+                        <input class="full-width has-padding has-border" id="signup-password" type="text"  placeholder="输入密码">
+                    </p>
+
+                    <p class="fieldset">
+                        <input type="checkbox" id="accept-terms">
+                        <label for="accept-terms">我已阅读并同意 <a href="#0">用户协议</a></label>
+                    </p>
+
+                    <p class="fieldset">
+                        <input class="full-width2" type="submit" value="注册新用户">
+                    </p>
+                </form>
+            </div>
+
+            <a href="#0" class="cd-close-form">关闭</a>
+        </div>
+    </div>
+</div>
+<!---->
+
+<!-- styles for the page -->
+<style>
+.project_page_metadata h6{
+    padding: 0.5em 0 0 0; 
+    font-size: 0.9em; 
+    text-align: center;
+    font-weight:bold; 
+}
+.project_page_metadata h1{
+    padding: 0 0 0 1em; 
+    font-size: 2.4em; 
+    font-weight:bold; 
+}
+.project_page_metadata p{
+    padding: 1em 0 0 2em;
+    font-size: 1.2em;
+    line-height: 1em;
+    font-weight:bold;
+}
+
+.project_page_switch_content btn{
+	border: none;
+	font-family: inherit;
+	color: inherit;
+	display: inline-block;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	outline: none;
+	position: relative;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+	border-radius:7px !important;
+	text-decoration: none;
+	border: 2px solid #ff0505;
+	/*#3c763dab*/
+	font-weight: 900;
+	background:#ff0505;
+	color:#fff;
+	z-index:1;
+	margin-left: 0px;
+	margin-bottom: 0px;
+	font-size:1.5em;
+}
+.project_page_switch_content btn:after {
+	content: '';
+	position: absolute;
+	z-index: -1;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+	color:#000000;
+}
+
+.project_page_main_story h1{
+    padding: 0 0 0.2em 0;
+    width: 100%;
+    font-size: 1.7em; 
+    font-weight:600; 
+}
+.project_page_main_story p{
+    text-indent: 2em;
+    padding: 0 0 0.5em 0;
+    width: 90%;
+    font-size: 1.3em; 
+    line-height: 150%
+}
+.project_page_main_story img{
+    padding: 1em 0 1em 0;
+    width: 90%
+}
+.project_page_progress li{
+    background-color: #f0f4f7;
+	position: relative;
+	border-color: #eff5f5;
+	margin-bottom: 20px;
+	padding: 10px 20px;
+}
+.project_page_progress li .listIcon{
+	position: absolute;
+	top: 14px;
+	left: -28px;
+	_left: -48px;
+	display: inline-block;
+	height: 14px;
+	width: 30px;
+	background: url('/images/progress_list_icon.png') no-repeat;
+}
+</style>
+
+<!-- 本页的主体 -->
+
+<!-- 临时空行，后面再调整 -->
+<br><br><br><br>
+<div class="content">
+    <div class="container">
+        <!-- 页面左边故事主体 -->
+        <div class="col-md-9 ">
+
+            <!-- 项目封面图和元数据 -->
+            <div class="row">
+                <div class="project_page_metadata">
+                    <!-- cover image -->
+                    <div class="col-md-4 ">
+                        <!-- insert image, scaled to column width -->
+                        <img src="./images/cover.jpg" width="100%" style="margin:1em 0 0 0;">
+                        <h6>运营机构：中国社会福利基金会</h6>
+                    </div>                   
+                    <!-- meta data -->
+                    <div class="col-md-7">
+                        <h1>大山里的健康小课桌</h1>
+                        <p>已募善款：2333元</p>
+                        <p>参捐人数：123321</p>
+                        <p>项目时间：2018年1月32日 至 2018年2月29日</p>
+                        <a href="#" style="background:#da7400; font-size: 1em; margin: 0 0 0 0;">
+                            <h1>我来捐助</h1>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-1 ">
+                </div>
+            </div>
+
+            <!-- 在介绍和进展间切换，暂未实现 -->
+            <!-- <br><br>
+            <div class="row">
+                <div class="project_page_switch_content">
+                    <a href="#" class="btn btn-1c" style="font-size: 1.5em; margin: 0 0 0 0">项目介绍</a>
+                    <a href="#" class="btn btn-1c" style="font-size: 1.5em; margin: 0 0 0 0">项目进展</a>
+                </div>
+            </div> -->
+
+            <!-- 项目故事的主体，文字和图 -->
+            <div class="row">
+                <div class="project_page_main_story">
+                    <br>
+                    <img src="images/story0.jpg" alt="" />
+                    <p>拍这张照片的时候，交梨小学的同学们正在上讨论课后作业。一直趴在破旧的课桌椅上写作业的他们，字终于不再歪歪倒倒了，终于可以在平整的桌面写字了。</p>
+                    <p>交梨小学的课桌椅采购自上世纪90年代，距今也有20年了，项目人员走访到学校时发现，几乎所有的课桌表面都是坑坑洼洼，如果平铺一张纸并在纸上写字的话，不一会儿，纸上就戳出无数个小洞。不少课桌的桌肚已经没了挡板，很多椅背也不知去向，只留下空荡荡的椅子金属支架，靠一下，戳得背疼。但很多孩子走过又长又窄的山路，到达这里的时候，就是在这样的环境下学习和成长的。</p>
+                    <p>老师说，看着孩子们坐在又亮又新的课桌椅前读书写字，心情都变得明朗起来了！孩子们特别感谢叔叔阿姨们的关心和付出。</p>
+                    <p>健康小课桌项目由爱德基金会于2011年发起，旨在让大山里的孩子用上适合他们身体发育的、设计科学的学生专用课桌椅，使他们得以在学校里愉快地学习、健康地成长。截止2017年5月底，本项目已支持17864套课桌椅，帮助西部贫困山区116所村小的孩子实现了健康求学的心愿。</p>
+                    <h1>【受助群体情况】</h1>
+                    <p>他们不知道，城市里的孩子，在怎样的学校和教室上课，唯一的心愿，就是能有一张可以安放书本、安放梦想的课桌。每天，可以在平稳的小课桌上画出对未来的希望，让平稳的小课桌伴随自己渐渐长大。</p>
+                    <img src="images/story1.jpg" alt="" />
+                    <p>然而现实，许多山区村小设施简陋，缺少基本的教学设备，尤其课桌椅子配备不足，且陈旧的课桌椅更新换代不及时。许多好不容易获得学习机会的孩子，却只能在凹凸不平的课桌和歪斜松散的椅子上完成每天的学习，却严重影响了孩子们的骨骼发育和视力水平。</p>
+                    <img src="images/story2.jpg" alt="" />
+                    <p>这些简陋的课桌上开了很大的口子，孩子们写字的时候不得不在桌上垫上书本，才能保证把字写工整，不戳穿本子。</p>
+                    <img src="images/story3.jpg" alt="" />
+                    <p>虽然是旧课桌，但放学了也一样爱护的放起来。</p>
+                    <img src="images/story4.jpg" alt="" />
+                    <p>即使桌子散架了，也要用绳子绑起来继续使用，还能做抽屉。</p>
+                    <img src="images/story5.jpg" alt="" />
+                    <p>条件虽然艰苦，但孩子们的学习热情却丝毫不减。</p>
+                    <img src="images/story6.jpg" alt="" />
+                    <h1>【项目执行计划】</h1>
+                    <p>a、执行流程：来款——询价、对比价格——寻找厂家——签订采购合同——采购、备货——运输——验货——发放——反馈；</p>
+                    <p>b、执行周期：1-2个月（根据课桌椅套数、厂家备货时间及运输、安装的时间决定）</p>     
+                    <p>c、受助人筛选标准：农村完全小学，5年内不会被撤并，课桌椅破旧，桌面坑洼，且近两年内教育局及学校无课桌椅更新计划。</p>
+                    <img src="images/story7.jpg" alt="" />
+                    <h1>【项目预算】</h1>
+                    <p>项目预算：180元一套课桌椅，包含：</p>
+                    <img src="images/story8.jpg" alt="" />
+                    <h1>【捐赠收据获取方式】</h1>
+                    <p>爱德基金会将为您开具捐赠收据，需要捐赠收据的蚂蚁金服公益爱心用户须将以下信息（捐赠人姓名、开票 抬头、金额、捐赠截图、电话、地址等）发至邮箱fangjun@amity.org.cn申请，联系电话025-83260851。基于邮寄成本的考虑，100元以上的捐赠发票将以挂号信方式寄出，100元以下的捐赠发票请您自取，建议多次捐赠累积集中开具捐赠发票。感恩您的信任和理解。</p>
+                    <h1>【项目备案说明】</h1>
+                    <p>该项目已在【慈善中国】备案，公开募捐活动备案编号：5332000050917103XBA18002，您可登录【慈善中国】查询。 慈善中国，即全国慈善信息公开平台，于2017年9月4日正式开通，是民政部依据《慈善法》关于“信息公开”要求而建设的统一信息平台，用于慈善组织、慈善信托受托人等参与主体面向社会公开慈善信息。</p>
+                </div>
+            </div>
+
+            <!-- 项目进展 -->
+            <div class="row">
+                <div class="project_page_progress">
+                    <ul>
+                        <li>
+                            <span class="listIcon"></span>
+                            暂时没有<br>
+                            暂时没有<br>
+                            暂时没有<br>
+                        </li>
+                        <li>
+                            暂时没有<br>
+                            暂时没有<br>
+                            暂时没有<br>
+                        </li>
+                        <li>
+                            暂时没有<br>
+                            暂时没有<br>
+                            暂时没有<br>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-3">
+            <div class="store-right">
+                <h6> 推荐项目</h6>
+                <ul class="store-men">
+                    <li><a href="../GeiKunJingErTongSongShengHuoBao/main.html"><span> </span>
+                        [医疗救助] 给困境儿童送面包 </a>
+                        <p>HELLO小孩”爱心套餐是中国儿童少年基金会面向广大贫困家庭儿童和留守儿童以及因自然灾害、突发事故的儿童于2015年底启动的公益项目。包括日常学生套餐和灾后应急套餐两款，根据季节不同，又分为春夏和秋冬两个搭配方案</p>
+                    </li>
+                    <li class="last"><a href="../AiDeFenBeiJiuJiuErDuo/main.html"><span> </span>
+                        [其他] 爱的分贝 救救耳朵 </a>
+                        <p>2017年9月1日，极重度听力障碍的康康成为了一名一年级的新生，康康妈妈像所有的学生家长一样，开始每天检查康康作业督促他学习；跟其他妈妈不一样是，她要不时开导康康：耳蜗就像眼镜，不能摘，摘了就听不到了。因为康康现在就读于普通小学，他非常渴望和同学们一样不用带他的“小耳朵”去上学</p>
+                    </li>
+                </ul>
+            </div>									
+        </div>
+        <div class="clearfix"> </div>
+        <div class="row">
+            <br><br><br>
+        </div>
+    </div>
+</div>
+<!-- contents end -->
+
+
+
+
+<div class="footer">
+    <div class="container">
+        <ul>
+            <li><a href="#" >联系我们</a></li>
+            <li>|</li>
+            <li><a href="#" >关于境界的彼方</a> </li>
+            <li>|</li>
+            <li><a href="./manage/manage_approve_program.html">管理中心</a></li>
+            <li>|</li>
+            <li><a href="#" >意见反馈</a> </li>
+        </ul>
+        <span class="drop"> </span>
+        <p>境界の彼方 <span>S.E.U.</span> Suzhou, P.R.China</p>
+        <p class="footer-class">Copyright &copy; 1Q84.</p>
+        <ul class="social-icons">
+            <li class="twitter"><a href="#"><span> </span></a></li>
+            <li class="gmail"><a href="#"><span> </span></a></li>
+            <li class="print"><a href="#"><span> </span></a></li>
+        </ul>
+    </div>
+</div>
+
+</body>
+</html>
