@@ -6,10 +6,13 @@
     <link href="../css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
     <script src="../js/jquery.min.js"></script>
     <link href="../css/style.css" rel="stylesheet" type="text/css" media="all" />
-    <link href="../css/form.css" rel="stylesheet" type="text/css" media="all" />
     <meta charset="UTF-8"/>
     <title>Title</title>
-
+    <style>
+        img {
+            margin: 16px;
+        }
+    </style>
 </head>
 <body>
 
@@ -27,29 +30,14 @@
     </div>
 </div>
 <div class="container blog-content-container" style="margin-top: 160px">
-    <h2 style="margin-bottom: 10px">请登录</h2>
-    <form  th:action="@{/login}" method="post">
-        <div class="form-group col-md-5">
-            <label for="username" class="col-form-label">账号</label>
-            <input type="text" class="form-control" id="username" name="username" maxlength="50" placeholder="请输入账号"/>
+    <h2 style="margin: 25px 0px;">获取凭证</h2>
+    <h3>凭证1:</h3>
+    <img src="../images/pic1.jpg"/>
+    <h3>凭证2:</h3>
+    <img src="../images/pic1.jpg"/>
+    <h3>凭证3:</h3>
+    <img src="../images/pic1.jpg"/>
 
-        </div>
-        <div class="form-group col-md-5">
-            <label for="password" class="col-form-label">密码</label>
-            <input type="password" class="form-control" id="password" name="password" maxlength="30" placeholder="请输入密码" />
-        </div>
-        <div class="form-group col-md-5">
-            <input type="checkbox" name="remember-me"/> 记住我
-        </div>
-
-        <button id="btn-zt" class="btn" type="submit" >提交</button>
-        <div class=" col-md-5" th:if="${loginError}">
-            <p class="blog-label-error" th:text="${errorMsg}"></p>
-        </div>
-
-
-
-    </form>
 </div> <!-- /container -->
 
 
