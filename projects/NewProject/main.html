@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Home</title>
+<link href="../../css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<script src="../../js/jquery.min.js"></script>
+<script src="../../js/popup.js"></script>
+<link href="../../css/style.css" rel="stylesheet" type="text/css" media="all" />
+<link href="../../css/popup.css" rel="stylesheet" type="text/css" media="all" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+</head>
+<body onload="init();">
+
+<!--login and register-->
+<div class="header container">
+    <div class="logo">
+        <a href="../../index.html"><img src="../../images/logo.png" alt="click this to homepage" /></a>
+    </div>
+    <div class="top-nav">
+        <nav class="main_nav">
+            <ul>
+            <li><a href="#0" class="scroll">登录</a></li>
+            <li><a href="#0" class="scroll">注册</a></li>
+        </ul>
+        </nav>
+    </div>
+
+
+    <div class="cd-user-modal">
+        <div class="cd-user-modal-container">
+            <ul class="cd-switcher">
+                <li><a href="#0">用户登录</a></li>
+                <li><a href="#0">注册新用户</a></li>
+            </ul>
+            <!-- 登录表单 -->
+            <div id="cd-login"> 
+                <form class="cd-form">
+                    <p class="fieldset">
+                        <label class="image-replace cd-username" for="signin-username">用户名</label>
+                        <input class="full-width has-padding has-border" id="signin-username" type="text" placeholder="输入用户名">
+                    </p>
+
+                    <p class="fieldset">
+                        <label class="image-replace cd-password" for="signin-password">密码</label>
+                        <input class="full-width has-padding has-border" id="signin-password" type="text"  placeholder="输入密码">
+                    </p>
+
+                    <p class="fieldset">
+                        <input type="checkbox" id="remember-me" checked>
+                        <label for="remember-me">记住登录状态</label>
+                    </p>
+
+                    <p class="fieldset">
+                        <input class="full-width2" type="submit" value="登 录">
+                    </p>
+                </form>
+            </div>
+            <!-- 注册表单 -->
+            <div id="cd-signup"> 
+                <form class="cd-form">
+                    <p class="fieldset">
+                        <label class="image-replace cd-username" for="signup-username">用户名</label>
+                        <input class="full-width has-padding has-border" id="signup-username" type="text" placeholder="输入用户名">
+                    </p>
+
+                    <p class="fieldset">
+                        <label class="image-replace cd-email" for="signup-email">邮箱</label>
+                        <input class="full-width has-padding has-border" id="signup-email" type="email" placeholder="输入mail">
+                    </p>
+
+                    <p class="fieldset">
+                        <label class="image-replace cd-password" for="signup-password">密码</label>
+                        <input class="full-width has-padding has-border" id="signup-password" type="text"  placeholder="输入密码">
+                    </p>
+
+                    <p class="fieldset">
+                        <input type="checkbox" id="accept-terms">
+                        <label for="accept-terms">我已阅读并同意 <a href="#0">用户协议</a></label>
+                    </p>
+
+                    <p class="fieldset">
+                        <input class="full-width2" type="submit" value="注册新用户">
+                    </p>
+                </form>
+            </div>
+
+            <a href="#0" class="cd-close-form">关闭</a>
+        </div>
+    </div>
+</div>
+<!---->
+
+<!-- styles for the page -->
+<style>
+.title_row h1{
+    /* padding: 1em 0 0 2em; */
+    font-size: 3em;
+    /* line-height: 1em; */
+    font-weight:bold;
+    text-align: center;
+}
+
+.with_side_border{
+    padding-left:2em; 
+    padding-right:2em; 
+    border-right: 0.5em solid #ccc;
+    border-left: 0.5em solid #ccc;
+}
+textarea {
+    border: 0 none white;
+    overflow: hidden;
+    padding: 0;
+    outline: none;
+    background-color: #D0D0D0;
+    width: 100%
+}
+</style>
+
+<!-- 实现了输入框自动调整尺寸适应内容，在输入框末尾敲击回车保存这一行数据，点击已经发布的行可以编辑。实现的关键是移动名为textInput的textarea控件 -->
+<!-- 未实现功能：图片 -->
+<!-- 存在bug：行号异常+1 -->
+<script>
+    var observe;
+    var editingLineId;
+    var totalLineNum;
+    var idCount;
+    if (window.attachEvent) {
+        observe = function (element, event, handler) {
+            element.attachEvent('on'+event, handler);
+        };
+    }
+    else {
+        observe = function (element, event, handler) {
+            element.addEventListener(event, handler, false);
+        };
+    function init () {
+        idCount=0;
+        // "" if inserting a new line, otherwise the id of the line being edited (temporarily removed)
+        editingLineId="";
+        var textInput = document.getElementById('textInput');
+        observe(textInput, 'change',  resize);
+        observe(textInput, 'cut',     delayedResize);
+        observe(textInput, 'paste',   delayedResize);
+        observe(textInput, 'drop',    delayedResize);
+        observe(textInput, 'keydown', delayedResize);
+
+        textInput.focus();
+        textInput.select();
+        insertNewLine(buildNewLine("2017年9月1日，极重度听力障碍的康康成为了一名一年级的新生，康康妈妈像所有的学生家长一样，开始每天检查康康作业督促他学习；跟其他妈妈不一样是，她要不时开导康康：耳蜗就像眼镜，不能摘，摘了就听不到了。因为康康现在就读于普通小学，他非常渴望和同学们一样不用带他的“小耳朵”去上学。"));
+        insertNewLine(buildNewLine("康康家有6口人，爸爸妈妈在城里打工赚钱，他和爷爷奶奶还有失明的太奶奶生活在农村的家中，虽然家庭并不富裕甚至由于老人多并且身体也不太好，这个家还有些清贫，但在乡间的生活是简单而快乐的，直到2014年底，原来还能说些话的康康不能再开口说话，妈妈带他到长沙的医院，才发现康康是极重度感音神经性耳聋，这个时候康康已经4岁了，如果不能及时植入人工耳蜗，康康可能会失去最佳康复期。"));
+        insertNewLine(buildNewLine("【爱的分贝简介】"));
+        insertNewLine(buildNewLine("爱的分贝，成立于2012年3月2日，由众多播音员主持人共同发起的一项针对贫困聋儿进行救助的公益项目，隶属于中华思源工程扶贫基金会。"));
+        insertNewLine(buildNewLine("爱的分贝旨在通过人工耳蜗手术植入资助、听力语言康复资助、听障儿童家长培训、中小康复机构能力建设、爱耳知识宣传等多样化的形式，从资金支持、政策咨询、就医指导、康复教育师资培训、机构教辅教具提供等多个方面为听障儿童群体提供支持和帮助。"));
+        insertNewLine(buildNewLine("五年时间，通过线上月捐平台等捐赠渠道已有160余万爱心捐赠人，爱的分贝累计为10000多个听障儿童家庭提供了救助服务，并直接资助近2500多个贫困听障儿童家庭，让400位听障儿童接受了人工耳蜗植入手术，对超过1000位听障儿童进行了康复训练，培训了1100多位听障儿童家长。"));
+
+        resize();
+    }
+    function resize () {
+        // do when we catch an "enter"
+        textInput=document.getElementById('textInput');
+        if(textInput.value.substring(textInput.value.length-1) == '\n'){
+            var newLine = buildNewLine(textInput.value.substring(0,textInput.value.length-1));
+            if(newLine !== null){
+                insertNewLine(newLine);
+            }
+            textInput.value="";
+        }
+        textInput.style.height = 'auto';
+        textInput.style.height = textInput.scrollHeight+'px';
+    }
+    /* 0-timeout to get the already changed text */
+    function delayedResize () {
+        window.setTimeout(resize, 0);
+    }
+    // these are the auxilleray methods
+    function buildNewLine(contentIn,editingIDIn=""){
+        if(contentIn=="")
+            return null;
+        var para = document.createElement("p");
+        var node = document.createTextNode(contentIn);
+        if(editingIDIn==""){
+            para.setAttribute("id", "contentLine"+idCount.toString());
+            idCount+=1;
+        }
+        else{
+            para.setAttribute("id", editingIDIn);
+        }
+        para.appendChild(node);
+        return para;
+    }
+    function insertNewLine(newLine){
+        if(newLine!==null){
+            var editor = document.getElementById("project_edit_page_editor");
+            var textInput = document.getElementById('textInput');
+            editor.insertBefore(newLine,textInput);
+            // editor.appendChild(newLine);
+            editingLineId="";
+            var idCp = newLine.getAttribute("id");
+            observe(newLine, 'click',function(){toEditLine(idCp)});
+        }
+    }
+    function toEditLine(moveInputTolineId){
+        var textInput = document.getElementById('textInput');
+        var moveInputToLine = document.getElementById(moveInputTolineId);
+        var editor = document.getElementById("project_edit_page_editor");
+        if(editingLineId!==""){
+            newLine = buildNewLine(textInput.value,editingLineId)
+            if(newLine!==null){
+                var idCp = newLine.getAttribute("id");
+                observe(newLine, 'click',function(){toEditLine(idCp)});
+                editor.insertBefore(newLine,textInput);
+            }
+            editingLineId = "";
+        }
+        editor.insertBefore(textInput,moveInputToLine);
+        textInput.value=moveInputToLine.innerHTML;
+        editingLineId=moveInputTolineId;
+        // previous sibling?
+        editor.removeChild(moveInputToLine);
+        resize();
+    }
+}
+</script>
+
+<!-- 本页的主体 -->
+
+<!-- 临时空行，后面再调整 -->
+<br><br><br><br><br><br>
+<div class="content">
+    <div class="container">
+        <!-- 页面左边故事主体 -->
+        <div class="col-md-9 ">
+            <div class="with_side_border">
+                <!-- 标题栏 -->
+                <div class="row">
+                    <div class="title_row">
+                        <h1>项目编辑</h1>
+                        <br>
+                    </div>
+                </div>
+                <!-- 项目故事的主体，文字和图 -->
+                <div class="row">
+                    <div id="project_edit_page_editor">
+                        <textarea rows="1" style="height:1em; resize: none;" id="textInput">
+                        </textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 暂时啥都没有 -->
+        <div class="col-md-3">
+
+        </div>
+    </div>
+</div>
+<br><br>
+<!-- contents end -->
+
+
+
+
+<div class="footer">
+    <div class="container">
+        <ul>
+            <li><a href="#" >联系我们</a></li>
+            <li>|</li>
+            <li><a href="#" >关于境界的彼方</a> </li>
+            <li>|</li>
+            <li><a href="./manage/manage_approve_program.html">管理中心</a></li>
+            <li>|</li>
+            <li><a href="#" >意见反馈</a> </li>
+        </ul>
+        <span class="drop"> </span>
+        <p>境界の彼方 <span>S.E.U.</span> Suzhou, P.R.China</p>
+        <p class="footer-class">Copyright &copy; 1Q84.</p>
+        <ul class="social-icons">
+            <li class="twitter"><a href="#"><span> </span></a></li>
+            <li class="gmail"><a href="#"><span> </span></a></li>
+            <li class="print"><a href="#"><span> </span></a></li>
+        </ul>
+    </div>
+</div>
+
+</body>
+</html>
