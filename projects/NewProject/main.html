@@ -137,16 +137,51 @@ textarea {
     padding: 1em 0 1em 0;
     width: 100%
 }
+
+/* 右击菜单 */
+.menu
+{
+    width: 150px;
+    box-shadow: 3px 3px 5px #888888;
+    border-style: solid;
+    border-width: 1px;
+    border-color: grey;
+    border-radius: 2px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    position: fixed;
+    display: none;
+    background-color: white;
+    font-size: 1.3em; 
+}
+
+.menu-item
+{
+    padding-top: 0.35em;
+    height: 2em;
+}
+
+.menu-item:hover
+{
+    background-color: #6CB5FF;
+    cursor: pointer;
+}
 </style>
 
 <!-- 实现了输入框自动调整尺寸适应内容，在输入框末尾敲击回车保存这一行数据，点击已经发布的行可以编辑。实现的关键是移动名为textInput的textarea控件 -->
 <!-- 未实现功能：图片 -->
 <!-- 存在bug：行号异常+1 -->
+<!-- 覆盖右击菜单 http://qnimate.com/customizing-right-click-in-html-page/ -->
+<!-- 点击按钮后选择图片并替换 https://stackoverflow.com/questions/17138244/how-to-display-selected-image-without-sending-data-to-server -->
 <script>
     var observe;
     var editingLineId;
     var totalLineNum;
     var idCount;
+    var menuDisplayed = false;
+    var menuBox = null;
     if (window.attachEvent) {
         observe = function (element, event, handler) {
             element.attachEvent('on'+event, handler);
@@ -166,13 +201,16 @@ textarea {
         observe(textInput, 'paste',   delayedResize);
         observe(textInput, 'drop',    delayedResize);
         observe(textInput, 'keydown', delayedResize);
+        observe(window, 'click', hideContextmenuIfDisplayed);
+        observe(textInput, 'click', hideContextmenuIfDisplayed);
 
         textInput.focus();
         textInput.select();
+        listenToRightClickOnLine(textInput);
         insertNewLine(buildNewLine("2017年9月1日，极重度听力障碍的康康成为了一名一年级的新生，康康妈妈像所有的学生家长一样，开始每天检查康康作业督促他学习；跟其他妈妈不一样是，她要不时开导康康：耳蜗就像眼镜，不能摘，摘了就听不到了。因为康康现在就读于普通小学，他非常渴望和同学们一样不用带他的“小耳朵”去上学。"));
         insertNewLine(buildNewLine("康康家有6口人，爸爸妈妈在城里打工赚钱，他和爷爷奶奶还有失明的太奶奶生活在农村的家中，虽然家庭并不富裕甚至由于老人多并且身体也不太好，这个家还有些清贫，但在乡间的生活是简单而快乐的，直到2014年底，原来还能说些话的康康不能再开口说话，妈妈带他到长沙的医院，才发现康康是极重度感音神经性耳聋，这个时候康康已经4岁了，如果不能及时植入人工耳蜗，康康可能会失去最佳康复期。"));
         insertNewLine(buildNewLine("【爱的分贝简介】"));
-        insertNewImgLine(buildNewImgLine("images/story0.jpg"));
+        insertImgLine(buildNewImgLine("images/story0.jpg"))
         insertNewLine(buildNewLine("爱的分贝，成立于2012年3月2日，由众多播音员主持人共同发起的一项针对贫困聋儿进行救助的公益项目，隶属于中华思源工程扶贫基金会。"));
         insertNewLine(buildNewLine("爱的分贝旨在通过人工耳蜗手术植入资助、听力语言康复资助、听障儿童家长培训、中小康复机构能力建设、爱耳知识宣传等多样化的形式，从资金支持、政策咨询、就医指导、康复教育师资培训、机构教辅教具提供等多个方面为听障儿童群体提供支持和帮助。"));
         insertNewLine(buildNewLine("五年时间，通过线上月捐平台等捐赠渠道已有160余万爱心捐赠人，爱的分贝累计为10000多个听障儿童家庭提供了救助服务，并直接资助近2500多个贫困听障儿童家庭，让400位听障儿童接受了人工耳蜗植入手术，对超过1000位听障儿童进行了康复训练，培训了1100多位听障儿童家长。"));
@@ -209,6 +247,7 @@ textarea {
         else{
             newElement.setAttribute("id", editingIDIn);
         }
+        listenToRightClickOnLine(newElement);
         newElement.appendChild(node);
         return newElement;
     }
@@ -218,8 +257,7 @@ textarea {
             var textInput = document.getElementById('textInput');
             editor.insertBefore(newLine,textInput);
             editingLineId="";
-            var idCp = newLine.getAttribute("id");
-            observe(newLine, 'click',function(){editLine(idCp)});
+            listenToLeftClickOnLine(newLine);
         }
     }
     function editLine(moveInputTolineId){
@@ -229,8 +267,7 @@ textarea {
         if(editingLineId!==""){
             newLine = buildNewLine(textInput.value,editingLineId)
             if(newLine!==null){
-                var idCp = newLine.getAttribute("id");
-                observe(newLine, 'click',function(){editLine(idCp)});
+                listenToLeftClickOnLine(newLine);
                 editor.insertBefore(newLine,textInput);
             }
             editingLineId = "";
@@ -238,42 +275,115 @@ textarea {
         editor.insertBefore(textInput,moveInputToLine);
         textInput.value=moveInputToLine.innerHTML;
         editingLineId=moveInputTolineId;
-        // previous sibling?
         editor.removeChild(moveInputToLine);
         resize();
     }
+    function activateImgContextMenu(arguments,clickedElementID){
+        var left = arguments[0].clientX;
+        var top = arguments[0].clientY;
+
+        menuBox = window.document.querySelector(".menu");
+        menuBox.style.left = left + "px";
+        menuBox.style.top = top + "px";
+        menuBox.style.display = "block";
+
+        var clickedElement = document.getElementById(clickedElementID);
+        var RightClickMenuInsertAbove = document.getElementById("RightClickMenuInsertAbove");
+        var RightClickMenuDelete = document.getElementById("RightClickMenuDelete");
+        var RightClickMenuReplace = document.getElementById("RightClickMenuReplace");
+        listenToClickToDelete(RightClickMenuDelete,clickedElementID);
+        if(clickedElement.tagName == "P"){
+            RightClickMenuDelete.innerHTML="删除本段";
+            RightClickMenuReplace.hidden=true;
+        }
+        else{
+            RightClickMenuDelete.innerHTML="删除插图";
+            RightClickMenuReplace.hidden=false;
+            RightClickMenuReplace.innerHTML="替换插图";
+            listenToClickToReplace(RightClickMenuReplace, clickedElementID)
+       }
+
+        menuDisplayed = true;
+        // alert("You've tried to open context menu on "+insertImgAboveID + "->("+left.toString()+","+top.toString()+")");
+        arguments[0].preventDefault();
+    }
+    // 
     function buildNewImgLine(imgFilename, editingIDIn=""){
         if(imgFilename=="")
             return null;
         var newElement = document.createElement("img");
         newElement.src = imgFilename;
         if(editingIDIn==""){
-            newElement.setAttribute("id", "contentLine"+idCount.toString());
+            newElement.setAttribute("id", "contentLine"+idCount.toString()+newElement.className);
             idCount+=1;
         }
         else{
             newElement.setAttribute("id", editingIDIn);
         }
+        listenToRightClickOnLine(newElement);
         return newElement;
     }
-    function buildNewButtonForImgLine(newImgLine){
-        // <input type="button" value="hehe" style="position:absolute; top: 25em;">
-        
-    }
-    function insertNewImgLineWithButton(newLine, buttonForLine=null){
+    function insertImgLine(newLine,afterID="textInput"){
         if(newLine!==null){
             var editor = document.getElementById("project_edit_page_editor");
-            var textInput = document.getElementById('textInput');
+            var textInput = document.getElementById(afterID);
             editor.insertBefore(newLine,textInput);
-            var idCp = newLine.getAttribute("id");
-            observe(newLine, 'click',function(){editLine(idCp)});
-
-            var img_selector = document.getElementById("project_edit_page_img_selector");
-
-            if(buttonForLine!==null){
-
-            }
+            // editingLineId="";
+            // var idCp = newLine.getAttribute("id");
+            // observe(newLine, 'click',function(){editLine(idCp)});
         }
+    }
+    function hideContextmenuIfDisplayed(){
+        if(menuDisplayed == true){
+            menuBox.style.display = "none"; 
+            menuDisplayed = false;
+        }
+    }
+    function listenToLeftClickOnLine(lineToListen){
+        var idCp = lineToListen.getAttribute("id");
+        observe(lineToListen, 'click',function(){hideContextmenuIfDisplayed();editLine(idCp);});
+    }
+    function listenToRightClickOnLine(lineToListen){
+
+        var idCp = lineToListen.getAttribute("id");
+        observe(lineToListen, 'contextmenu',function(){hideContextmenuIfDisplayed();activateImgContextMenu(arguments,idCp);});
+    }
+    function listenToClickToDelete(elementToClick, elementToDeleteID){
+        // by replacing the element with its clone, all the attached listeners are removed (to avoid adding a removing listener each time we click)
+        var elementToClickClone = elementToClick.cloneNode(true);
+        elementToClick.parentNode.replaceChild(elementToClickClone,elementToClick);
+        observe(elementToClickClone, 'click',function(){
+            hideContextmenuIfDisplayed();
+            deleteElement(arguments,elementToDeleteID);});
+    }
+    function listenToClickToReplace(elementToClick, elementToReplaceID){
+        var elementToClickClone = elementToClick.cloneNode(true);
+        elementToClick.parentNode.replaceChild(elementToClickClone,elementToClick);
+        observe(elementToClickClone, 'click',function(){
+            hideContextmenuIfDisplayed();
+            replaceImage(arguments,elementToReplaceID);});
+    }
+    function deleteElement(arguments,elementToDeleteID){
+        var editor = document.getElementById("project_edit_page_editor");
+        var elementToDelete = document.getElementById(elementToDeleteID);
+        editor.removeChild(elementToDelete);
+    }
+    // https://stackoverflow.com/questions/17138244/how-to-display-selected-image-without-sending-data-to-server
+    function replaceImage(arguments, imgToReplaceID){
+        // by replacing the element with its clone, all the attached listeners are removed (to avoid adding a removing listener each time we click)
+        var imgLoader = document.getElementById("imageLoader");
+        var imgLoaderClone = imgLoader.cloneNode(true);
+        imgLoader.parentNode.replaceChild(imgLoaderClone,imgLoader);
+
+        var imgToReplace = document.getElementById(imgToReplaceID);
+        var fileReader=new FileReader();
+        // when image is loaded, set the src of the image where you want to display it
+        fileReader.onload = function(e) { imgToReplace.src = this.result; };
+        imgLoaderClone.addEventListener("change",function() {
+            // fill fr with image data    
+            fileReader.readAsDataURL(imgLoaderClone.files[0]);
+        });
+        imgLoaderClone.click();
     }
 }
 </script>
@@ -305,7 +415,7 @@ textarea {
         </div>
         <!-- 暂时啥都没有 -->
         <div class="col-md-3">
-            <div class="row">
+            <!-- <div class="row">
                 <div class="title_row">
                     <h1>&nbsp</h1>
                     <br>
@@ -316,14 +426,20 @@ textarea {
                         <input type="button" value="haha" style="position:absolute; top: 10em;">
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 </div>
 <br><br>
 <!-- contents end -->
-
-
+<!-- 右击菜单 -->
+<div class="menu">
+    <div class="menu-item" id="RightClickMenuInsertAbove">在上方插入图片</div>
+    <div class="menu-item" id="RightClickMenuDelete">删除本</div>
+    <div class="menu-item" id="RightClickMenuReplace">替换本</div>
+</div>
+<!-- 图片输入 -->
+<input id="imageLoader" type="file" display="None"/>
 
 
 <div class="footer">
