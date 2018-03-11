@@ -111,9 +111,30 @@
 textarea {
     border: 0 none white;
     overflow: hidden;
-    padding: 0;
     outline: none;
     background-color: #D0D0D0;
+    width: 100%;
+    text-indent: 2em;
+    padding: 0 0 0.5em 0;
+    font-size: 1.3em; 
+    line-height: 150%
+}
+.project_page_main_story
+.project_page_main_story h1{
+    padding: 0 0 0.2em 0;
+    width: 100%;
+    font-size: 1.7em; 
+    font-weight:600; 
+}
+.project_page_main_story p{
+    text-indent: 2em;
+    padding: 0 0 0.5em 0;
+    width: 100%;
+    font-size: 1.3em; 
+    line-height: 150%
+}
+.project_page_main_story img{
+    padding: 1em 0 1em 0;
     width: 100%
 }
 </style>
@@ -151,6 +172,7 @@ textarea {
         insertNewLine(buildNewLine("2017年9月1日，极重度听力障碍的康康成为了一名一年级的新生，康康妈妈像所有的学生家长一样，开始每天检查康康作业督促他学习；跟其他妈妈不一样是，她要不时开导康康：耳蜗就像眼镜，不能摘，摘了就听不到了。因为康康现在就读于普通小学，他非常渴望和同学们一样不用带他的“小耳朵”去上学。"));
         insertNewLine(buildNewLine("康康家有6口人，爸爸妈妈在城里打工赚钱，他和爷爷奶奶还有失明的太奶奶生活在农村的家中，虽然家庭并不富裕甚至由于老人多并且身体也不太好，这个家还有些清贫，但在乡间的生活是简单而快乐的，直到2014年底，原来还能说些话的康康不能再开口说话，妈妈带他到长沙的医院，才发现康康是极重度感音神经性耳聋，这个时候康康已经4岁了，如果不能及时植入人工耳蜗，康康可能会失去最佳康复期。"));
         insertNewLine(buildNewLine("【爱的分贝简介】"));
+        insertNewImgLine(buildNewImgLine("images/story0.jpg"));
         insertNewLine(buildNewLine("爱的分贝，成立于2012年3月2日，由众多播音员主持人共同发起的一项针对贫困聋儿进行救助的公益项目，隶属于中华思源工程扶贫基金会。"));
         insertNewLine(buildNewLine("爱的分贝旨在通过人工耳蜗手术植入资助、听力语言康复资助、听障儿童家长培训、中小康复机构能力建设、爱耳知识宣传等多样化的形式，从资金支持、政策咨询、就医指导、康复教育师资培训、机构教辅教具提供等多个方面为听障儿童群体提供支持和帮助。"));
         insertNewLine(buildNewLine("五年时间，通过线上月捐平台等捐赠渠道已有160余万爱心捐赠人，爱的分贝累计为10000多个听障儿童家庭提供了救助服务，并直接资助近2500多个贫困听障儿童家庭，让400位听障儿童接受了人工耳蜗植入手术，对超过1000位听障儿童进行了康复训练，培训了1100多位听障儿童家长。"));
@@ -178,30 +200,29 @@ textarea {
     function buildNewLine(contentIn,editingIDIn=""){
         if(contentIn=="")
             return null;
-        var para = document.createElement("p");
+        var newElement = document.createElement("p");
         var node = document.createTextNode(contentIn);
         if(editingIDIn==""){
-            para.setAttribute("id", "contentLine"+idCount.toString());
+            newElement.setAttribute("id", "contentLine"+idCount.toString());
             idCount+=1;
         }
         else{
-            para.setAttribute("id", editingIDIn);
+            newElement.setAttribute("id", editingIDIn);
         }
-        para.appendChild(node);
-        return para;
+        newElement.appendChild(node);
+        return newElement;
     }
     function insertNewLine(newLine){
         if(newLine!==null){
             var editor = document.getElementById("project_edit_page_editor");
             var textInput = document.getElementById('textInput');
             editor.insertBefore(newLine,textInput);
-            // editor.appendChild(newLine);
             editingLineId="";
             var idCp = newLine.getAttribute("id");
-            observe(newLine, 'click',function(){toEditLine(idCp)});
+            observe(newLine, 'click',function(){editLine(idCp)});
         }
     }
-    function toEditLine(moveInputTolineId){
+    function editLine(moveInputTolineId){
         var textInput = document.getElementById('textInput');
         var moveInputToLine = document.getElementById(moveInputTolineId);
         var editor = document.getElementById("project_edit_page_editor");
@@ -209,7 +230,7 @@ textarea {
             newLine = buildNewLine(textInput.value,editingLineId)
             if(newLine!==null){
                 var idCp = newLine.getAttribute("id");
-                observe(newLine, 'click',function(){toEditLine(idCp)});
+                observe(newLine, 'click',function(){editLine(idCp)});
                 editor.insertBefore(newLine,textInput);
             }
             editingLineId = "";
@@ -220,6 +241,39 @@ textarea {
         // previous sibling?
         editor.removeChild(moveInputToLine);
         resize();
+    }
+    function buildNewImgLine(imgFilename, editingIDIn=""){
+        if(imgFilename=="")
+            return null;
+        var newElement = document.createElement("img");
+        newElement.src = imgFilename;
+        if(editingIDIn==""){
+            newElement.setAttribute("id", "contentLine"+idCount.toString());
+            idCount+=1;
+        }
+        else{
+            newElement.setAttribute("id", editingIDIn);
+        }
+        return newElement;
+    }
+    function buildNewButtonForImgLine(newImgLine){
+        // <input type="button" value="hehe" style="position:absolute; top: 25em;">
+        
+    }
+    function insertNewImgLineWithButton(newLine, buttonForLine=null){
+        if(newLine!==null){
+            var editor = document.getElementById("project_edit_page_editor");
+            var textInput = document.getElementById('textInput');
+            editor.insertBefore(newLine,textInput);
+            var idCp = newLine.getAttribute("id");
+            observe(newLine, 'click',function(){editLine(idCp)});
+
+            var img_selector = document.getElementById("project_edit_page_img_selector");
+
+            if(buttonForLine!==null){
+
+            }
+        }
     }
 }
 </script>
@@ -242,7 +296,7 @@ textarea {
                 </div>
                 <!-- 项目故事的主体，文字和图 -->
                 <div class="row">
-                    <div id="project_edit_page_editor">
+                    <div class="project_page_main_story" id="project_edit_page_editor">
                         <textarea rows="1" style="height:1em; resize: none;" id="textInput">
                         </textarea>
                     </div>
@@ -251,7 +305,18 @@ textarea {
         </div>
         <!-- 暂时啥都没有 -->
         <div class="col-md-3">
-
+            <div class="row">
+                <div class="title_row">
+                    <h1>&nbsp</h1>
+                    <br>
+                </div>
+                <div class="row">
+                    <div id="project_edit_page_img_selector">
+                        <input type="button" value="hehe" style="position:absolute; top: 25em;">
+                        <input type="button" value="haha" style="position:absolute; top: 10em;">
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
