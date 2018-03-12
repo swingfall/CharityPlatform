@@ -28,12 +28,12 @@ h2,h3,h4,h5,h6,p{
 .bottom{
 	background: rgba(0, 0, 0, 0.62);
 	position: absolute;
-	padding-top: 35px;
+	padding-top: 2%;
 	left: 20%;
 	bottom: 0;
 	z-index: 9;
-	height: 132px;
-	margin:auto;
+	height: 20%;
+	margin: auto;
 	width: 60%;
 }
 
@@ -254,10 +254,11 @@ ul.callbacks_tabs.callbacks1_tabs {
 	margin: 0;
 	max-width: none;
 	position: absolute;
-	top: -16px;
+	top: -15px;
 	left: 60%;
 	background: url(../images/back.png)0px 147px no-repeat;
-	width: 564px;
+	width: 26%;
+	height: 66%;
 	/*min-height: 526px;*/
 }
 .banner h2{
