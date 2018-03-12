@@ -191,6 +191,8 @@ textarea {
         observe = function (element, event, handler) {
             element.addEventListener(event, handler, false);
         };
+
+    // -------页面初始化，动态添加元素
     function init () {
         idCount=0;
         // "" if inserting a new line, otherwise the id of the line being edited (temporarily removed)
@@ -217,6 +219,9 @@ textarea {
 
         resize();
     }
+
+
+    // -------自适应缩放textarea，顺便检查是否有回车(新起一段)
     function resize () {
         // do when we catch an "enter"
         textInput=document.getElementById('textInput');
@@ -234,7 +239,10 @@ textarea {
     function delayedResize () {
         window.setTimeout(resize, 0);
     }
-    // these are the auxilleray methods
+    // -------
+
+
+    // -------添加新段落
     function buildNewLine(contentIn,editingIDIn=""){
         if(contentIn=="")
             return null;
@@ -260,54 +268,8 @@ textarea {
             listenToLeftClickOnLine(newLine);
         }
     }
-    function editLine(moveInputTolineId){
-        var textInput = document.getElementById('textInput');
-        var moveInputToLine = document.getElementById(moveInputTolineId);
-        var editor = document.getElementById("project_edit_page_editor");
-        if(editingLineId!==""){
-            newLine = buildNewLine(textInput.value,editingLineId)
-            if(newLine!==null){
-                listenToLeftClickOnLine(newLine);
-                editor.insertBefore(newLine,textInput);
-            }
-            editingLineId = "";
-        }
-        editor.insertBefore(textInput,moveInputToLine);
-        textInput.value=moveInputToLine.innerHTML;
-        editingLineId=moveInputTolineId;
-        editor.removeChild(moveInputToLine);
-        resize();
-    }
-    function activateImgContextMenu(arguments,clickedElementID){
-        var left = arguments[0].clientX;
-        var top = arguments[0].clientY;
 
-        menuBox = window.document.querySelector(".menu");
-        menuBox.style.left = left + "px";
-        menuBox.style.top = top + "px";
-        menuBox.style.display = "block";
-
-        var clickedElement = document.getElementById(clickedElementID);
-        var RightClickMenuInsertAbove = document.getElementById("RightClickMenuInsertAbove");
-        var RightClickMenuDelete = document.getElementById("RightClickMenuDelete");
-        var RightClickMenuReplace = document.getElementById("RightClickMenuReplace");
-        listenToClickToDelete(RightClickMenuDelete,clickedElementID);
-        if(clickedElement.tagName == "P"){
-            RightClickMenuDelete.innerHTML="删除本段";
-            RightClickMenuReplace.hidden=true;
-        }
-        else{
-            RightClickMenuDelete.innerHTML="删除插图";
-            RightClickMenuReplace.hidden=false;
-            RightClickMenuReplace.innerHTML="替换插图";
-            listenToClickToReplace(RightClickMenuReplace, clickedElementID)
-       }
-
-        menuDisplayed = true;
-        // alert("You've tried to open context menu on "+insertImgAboveID + "->("+left.toString()+","+top.toString()+")");
-        arguments[0].preventDefault();
-    }
-    // 
+    // -------添加新图片
     function buildNewImgLine(imgFilename, editingIDIn=""){
         if(imgFilename=="")
             return null;
@@ -328,62 +290,145 @@ textarea {
             var editor = document.getElementById("project_edit_page_editor");
             var textInput = document.getElementById(afterID);
             editor.insertBefore(newLine,textInput);
-            // editingLineId="";
-            // var idCp = newLine.getAttribute("id");
-            // observe(newLine, 'click',function(){editLine(idCp)});
         }
     }
+
+    // -------左键点击时，编辑已有段落
+    function editLine(moveInputTolineId){
+        var textInput = document.getElementById('textInput');
+        var moveInputToLine = document.getElementById(moveInputTolineId);
+        var editor = document.getElementById("project_edit_page_editor");
+        if(editingLineId!==""){
+            newLine = buildNewLine(textInput.value,editingLineId)
+            if(newLine!==null){
+                listenToLeftClickOnLine(newLine);
+                editor.insertBefore(newLine,textInput);
+            }
+            editingLineId = "";
+        }
+        editor.insertBefore(textInput,moveInputToLine);
+        textInput.value=moveInputToLine.innerHTML;
+        editingLineId=moveInputTolineId;
+        editor.removeChild(moveInputToLine);
+        resize();
+    }
+
+    // -------响应右击，弹出菜单
+    function activateImgContextMenu(arguments,clickedElementID){
+        var left = arguments[0].clientX;
+        var top = arguments[0].clientY;
+
+        menuBox = window.document.querySelector(".menu");
+        menuBox.style.left = left + "px";
+        menuBox.style.top = top + "px";
+        menuBox.style.display = "block";
+
+        var clickedElement = document.getElementById(clickedElementID);
+        var RightClickMenuInsertAbove = document.getElementById("RightClickMenuInsertAbove");
+        var RightClickMenuDelete = document.getElementById("RightClickMenuDelete");
+        var RightClickMenuReplace = document.getElementById("RightClickMenuReplace");
+        // var RightClickMenuDebug = document.getElementById("RightClickMenuDebug");
+        if(clickedElement.tagName == "P"){
+            // 点击文字段
+            RightClickMenuDelete.innerHTML="删除本段";
+            RightClickMenuReplace.hidden=true;
+        }
+        else if(clickedElement.tagName == "IMG"){
+            // 点击图片
+            RightClickMenuDelete.innerHTML="删除插图";
+            RightClickMenuReplace.hidden=false;
+            RightClickMenuReplace.innerHTML="替换插图";
+            listenToClickToReplace(RightClickMenuReplace, clickedElementID)
+       }
+       else if(clickedElement.tagName == "TEXTAREA"){
+           // 点击编辑中文字
+           RightClickMenuDelete.hidden=true;
+           RightClickMenuReplace.hidden=true;
+        }
+        listenToClickToDelete(RightClickMenuDelete,clickedElementID);
+
+        menuDisplayed = true;
+        // alert("You've tried to open context menu on "+insertImgAboveID + "->("+left.toString()+","+top.toString()+")");
+        arguments[0].preventDefault();
+    }
+
     function hideContextmenuIfDisplayed(){
         if(menuDisplayed == true){
             menuBox.style.display = "none"; 
             menuDisplayed = false;
         }
     }
+
+
+    // -------
+    // -------添加页面点击响应
     function listenToLeftClickOnLine(lineToListen){
         var idCp = lineToListen.getAttribute("id");
         observe(lineToListen, 'click',function(){hideContextmenuIfDisplayed();editLine(idCp);});
     }
     function listenToRightClickOnLine(lineToListen){
-
         var idCp = lineToListen.getAttribute("id");
         observe(lineToListen, 'contextmenu',function(){hideContextmenuIfDisplayed();activateImgContextMenu(arguments,idCp);});
     }
+    // -------
+
+
+    // -------添加右击菜单响应
+    // 添加右击菜单选项-在上方插入图片的动作响应
+    function listenToClickToInsertImage(elementToClick, imageToAddID){
+        elementToClickWithoutListeners = removeCurrentListeners(elementToClick);
+        elementToClick.parentNode.replaceChild(elementToClickWithoutListeners,elementToClick);
+    }
+    // 添加右击菜单选项-删除本段文字/本副图片的动作响应
     function listenToClickToDelete(elementToClick, elementToDeleteID){
-        // by replacing the element with its clone, all the attached listeners are removed (to avoid adding a removing listener each time we click)
-        var elementToClickClone = elementToClick.cloneNode(true);
-        elementToClick.parentNode.replaceChild(elementToClickClone,elementToClick);
-        observe(elementToClickClone, 'click',function(){
+        elementToClickWithoutListeners = removeCurrentListeners(elementToClick);
+        observe(elementToClickWithoutListeners, 'click',function(){
             hideContextmenuIfDisplayed();
             deleteElement(arguments,elementToDeleteID);});
     }
+    // 添加右击菜单选项-替换本张图片的动作响应
     function listenToClickToReplace(elementToClick, elementToReplaceID){
-        var elementToClickClone = elementToClick.cloneNode(true);
-        elementToClick.parentNode.replaceChild(elementToClickClone,elementToClick);
-        observe(elementToClickClone, 'click',function(){
+        elementToClickWithoutListeners = removeCurrentListeners(elementToClick);
+        observe(elementToClickWithoutListeners, 'click',function(){
             hideContextmenuIfDisplayed();
             replaceImage(arguments,elementToReplaceID);});
     }
+    // -------
+
+
+    // -------右击菜单响应后的动作
+    // 在上方插入图片
+
+    // 删除本段文字/本副图片的动作
     function deleteElement(arguments,elementToDeleteID){
         var editor = document.getElementById("project_edit_page_editor");
         var elementToDelete = document.getElementById(elementToDeleteID);
         editor.removeChild(elementToDelete);
     }
+    // 替换图片的动作：调出文件选择工具，让用户选择一张图片，替换原图片的src
     // https://stackoverflow.com/questions/17138244/how-to-display-selected-image-without-sending-data-to-server
     function replaceImage(arguments, imgToReplaceID){
         // by replacing the element with its clone, all the attached listeners are removed (to avoid adding a removing listener each time we click)
         var imgLoader = document.getElementById("imageLoader");
-        var imgLoaderClone = imgLoader.cloneNode(true);
-        imgLoader.parentNode.replaceChild(imgLoaderClone,imgLoader);
+        imgLoaderWithoutListeners = removeCurrentListeners(imgLoader);
 
         var imgToReplace = document.getElementById(imgToReplaceID);
         var fileReader=new FileReader();
         // when image is loaded, set the src of the image where you want to display it
         fileReader.onload = function(e) { imgToReplace.src = this.result; };
-        imgLoaderClone.addEventListener("change",function() {
+        imgLoaderWithoutListeners.addEventListener("change",function() {
             // fill fr with image data    
-            fileReader.readAsDataURL(imgLoaderClone.files[0]);
+            fileReader.readAsDataURL(imgLoaderWithoutListeners.files[0]);
         });
-        imgLoaderClone.click();
+        imgLoaderWithoutListeners.click();
+    }
+
+    // -------辅助方法
+    function removeCurrentListeners(elementToProcess){
+        // by replacing the element with its clone, all the attached listeners are removed (to avoid adding a removing listener each time we click)
+        var elementToProcessClone = elementToProcess.cloneNode(true);
+        elementToProcess.parentNode.replaceChild(elementToProcessClone,elementToProcess);
+        return elementToProcessClone;
     }
 }
 </script>
@@ -435,11 +480,12 @@ textarea {
 <!-- 右击菜单 -->
 <div class="menu">
     <div class="menu-item" id="RightClickMenuInsertAbove">在上方插入图片</div>
-    <div class="menu-item" id="RightClickMenuDelete">删除本</div>
-    <div class="menu-item" id="RightClickMenuReplace">替换本</div>
+    <div class="menu-item" id="RightClickMenuDelete">删</div>
+    <div class="menu-item" id="RightClickMenuReplace">替换</div>
+    <!-- <div class="menu-item" id="RightClickMenuDebug">debug</div> -->
 </div>
-<!-- 图片输入 -->
-<input id="imageLoader" type="file" display="None"/>
+<!-- 隐藏的图片输入控件 -->
+<input id="imageLoader" type="file" style="display:none "/>
 
 
 <div class="footer">
