@@ -108,17 +108,19 @@
     border-right: 0.5em solid #ccc;
     border-left: 0.5em solid #ccc;
 }
+
 textarea {
     border: 0 none white;
     overflow: hidden;
     outline: none;
     background-color: #D0D0D0;
-    width: 100%;
+    /* width: 100%; */
     text-indent: 2em;
     padding: 0 0 0.5em 0;
     font-size: 1.3em; 
     line-height: 150%
 }
+
 .project_page_main_story
 .project_page_main_story h1{
     padding: 0 0 0.2em 0;
@@ -178,6 +180,7 @@ textarea {
 <script>
     var observe;
     var editingLineId;
+    var editingLineTagName;
     var totalLineNum;
     var idCount;
     var menuDisplayed = false;
@@ -197,6 +200,8 @@ textarea {
         idCount=0;
         // "" if inserting a new line, otherwise the id of the line being edited (temporarily removed)
         editingLineId="";
+        editingLineType="";
+
         var textInput = document.getElementById('textInput');
         observe(textInput, 'change',  resize);
         observe(textInput, 'cut',     delayedResize);
@@ -205,17 +210,22 @@ textarea {
         observe(textInput, 'keydown', delayedResize);
         observe(window, 'click', hideContextmenuIfDisplayed);
         observe(textInput, 'click', hideContextmenuIfDisplayed);
-
         textInput.focus();
         textInput.select();
         listenToRightClickOnLine(textInput);
-        insertNewLine(buildNewLine("2017年9月1日，极重度听力障碍的康康成为了一名一年级的新生，康康妈妈像所有的学生家长一样，开始每天检查康康作业督促他学习；跟其他妈妈不一样是，她要不时开导康康：耳蜗就像眼镜，不能摘，摘了就听不到了。因为康康现在就读于普通小学，他非常渴望和同学们一样不用带他的“小耳朵”去上学。"));
-        insertNewLine(buildNewLine("康康家有6口人，爸爸妈妈在城里打工赚钱，他和爷爷奶奶还有失明的太奶奶生活在农村的家中，虽然家庭并不富裕甚至由于老人多并且身体也不太好，这个家还有些清贫，但在乡间的生活是简单而快乐的，直到2014年底，原来还能说些话的康康不能再开口说话，妈妈带他到长沙的医院，才发现康康是极重度感音神经性耳聋，这个时候康康已经4岁了，如果不能及时植入人工耳蜗，康康可能会失去最佳康复期。"));
-        insertNewLine(buildNewLine("【爱的分贝简介】"));
-        insertImgLine(buildNewImgLine("images/story0.jpg"))
-        insertNewLine(buildNewLine("爱的分贝，成立于2012年3月2日，由众多播音员主持人共同发起的一项针对贫困聋儿进行救助的公益项目，隶属于中华思源工程扶贫基金会。"));
-        insertNewLine(buildNewLine("爱的分贝旨在通过人工耳蜗手术植入资助、听力语言康复资助、听障儿童家长培训、中小康复机构能力建设、爱耳知识宣传等多样化的形式，从资金支持、政策咨询、就医指导、康复教育师资培训、机构教辅教具提供等多个方面为听障儿童群体提供支持和帮助。"));
-        insertNewLine(buildNewLine("五年时间，通过线上月捐平台等捐赠渠道已有160余万爱心捐赠人，爱的分贝累计为10000多个听障儿童家庭提供了救助服务，并直接资助近2500多个贫困听障儿童家庭，让400位听障儿童接受了人工耳蜗植入手术，对超过1000位听障儿童进行了康复训练，培训了1100多位听障儿童家长。"));
+
+        var textInput = document.getElementById('titleInput');
+        textInput.value="项目标题";
+        var textInput = document.getElementById('opganizerInput');
+        textInput.value="运营机构";
+
+        insertNewElement(buildNewTextLine("2017年9月1日，极重度听力障碍的康康成为了一名一年级的新生，康康妈妈像所有的学生家长一样，开始每天检查康康作业督促他学习；跟其他妈妈不一样是，她要不时开导康康：耳蜗就像眼镜，不能摘，摘了就听不到了。因为康康现在就读于普通小学，他非常渴望和同学们一样不用带他的“小耳朵”去上学。"));
+        insertNewElement(buildNewTextLine("康康家有6口人，爸爸妈妈在城里打工赚钱，他和爷爷奶奶还有失明的太奶奶生活在农村的家中，虽然家庭并不富裕甚至由于老人多并且身体也不太好，这个家还有些清贫，但在乡间的生活是简单而快乐的，直到2014年底，原来还能说些话的康康不能再开口说话，妈妈带他到长沙的医院，才发现康康是极重度感音神经性耳聋，这个时候康康已经4岁了，如果不能及时植入人工耳蜗，康康可能会失去最佳康复期。"));
+        insertNewElement(buildNewTextLine("【爱的分贝简介】","h1"));
+        insertNewElement(buildNewImgLine("images/story0.jpg"))
+        insertNewElement(buildNewTextLine("爱的分贝，成立于2012年3月2日，由众多播音员主持人共同发起的一项针对贫困聋儿进行救助的公益项目，隶属于中华思源工程扶贫基金会。"));
+        insertNewElement(buildNewTextLine("爱的分贝旨在通过人工耳蜗手术植入资助、听力语言康复资助、听障儿童家长培训、中小康复机构能力建设、爱耳知识宣传等多样化的形式，从资金支持、政策咨询、就医指导、康复教育师资培训、机构教辅教具提供等多个方面为听障儿童群体提供支持和帮助。"));
+        insertNewElement(buildNewTextLine("五年时间，通过线上月捐平台等捐赠渠道已有160余万爱心捐赠人，爱的分贝累计为10000多个听障儿童家庭提供了救助服务，并直接资助近2500多个贫困听障儿童家庭，让400位听障儿童接受了人工耳蜗植入手术，对超过1000位听障儿童进行了康复训练，培训了1100多位听障儿童家长。"));
 
         resize();
     }
@@ -225,12 +235,23 @@ textarea {
     function resize () {
         // do when we catch an "enter"
         textInput=document.getElementById('textInput');
-        if(textInput.value.substring(textInput.value.length-1) == '\n'){
-            var newLine = buildNewLine(textInput.value.substring(0,textInput.value.length-1));
-            if(newLine !== null){
-                insertNewLine(newLine);
+        while(textInput.value.length>0){
+            var splitPos = textInput.value.search('\n');
+            // alert("Substring position: "+splitPos.toString());
+            if(splitPos<0){
+                break;
             }
-            textInput.value="";
+            else if((textInput.value.length == 1) && (textInput.value[0] == '\n')){
+                textInput.value="";
+            }
+            else{
+                var newTextLineContent = textInput.value.substring(0,splitPos);
+                insertNewElement(buildNewTextLine(newTextLineContent, editingLineTagName, editingLineId),"textInput")
+                editingLineTagName="";
+                editingLineId="";
+                textInput.value = textInput.value.substring(splitPos+1, textInput.value.length-1);
+                // alert("分割长度: "+newParagraphContent.length.toString()+", 剩余长度: "+textInput.value.length.toString());
+            }
         }
         textInput.style.height = 'auto';
         textInput.style.height = textInput.scrollHeight+'px';
@@ -242,11 +263,17 @@ textarea {
     // -------
 
 
-    // -------添加新段落
-    function buildNewLine(contentIn,editingIDIn=""){
+    // -------构建新段落元素
+    function buildNewTextLine(contentIn,lineTagName="P",editingIDIn=""){
         if(contentIn=="")
             return null;
-        var newElement = document.createElement("p");
+        var newElement=null;
+        if(lineTagName.toLowerCase() == 'p' || lineTagName == ""){
+            newElement = document.createElement("p");
+        }
+        else if(lineTagName.toLowerCase() == 'h1'){
+            newElement = document.createElement("h1");
+        }
         var node = document.createTextNode(contentIn);
         if(editingIDIn==""){
             newElement.setAttribute("id", "contentLine"+idCount.toString());
@@ -255,43 +282,38 @@ textarea {
         else{
             newElement.setAttribute("id", editingIDIn);
         }
-        listenToRightClickOnLine(newElement);
         newElement.appendChild(node);
+        listenToLeftClickOnLine(newElement);
+        listenToRightClickOnLine(newElement);
+        return newElement;
+    }   
+    // -------构建新图片元素
+    function buildNewImgLine(imgUrl){
+        if(imgUrl=="")
+            return null;
+            
+        var newElement = document.createElement("img");
+        newElement.src = imgUrl;
+        newElement.setAttribute("id", "contentLine"+idCount.toString()+newElement.className);
+        idCount+=1;
+
+        listenToRightClickOnLine(newElement);
         return newElement;
     }
-    function insertNewLine(newLine){
-        if(newLine!==null){
+
+
+    // -------插入新元素在制定元素之前或默认在textInput之后
+    function insertNewElement(newElement,afterID="textInput"){
+        if(newElement!==null){
             var editor = document.getElementById("project_edit_page_editor");
-            var textInput = document.getElementById('textInput');
-            editor.insertBefore(newLine,textInput);
-            editingLineId="";
-            listenToLeftClickOnLine(newLine);
+            var textInput = document.getElementById(afterID);
+            editor.insertBefore(newElement,textInput);
+            if(newElement.tagName == "P"){
+                editingLineId="";
+            }
         }
     }
 
-    // -------添加新图片
-    function buildNewImgLine(imgFilename, editingIDIn=""){
-        if(imgFilename=="")
-            return null;
-        var newElement = document.createElement("img");
-        newElement.src = imgFilename;
-        if(editingIDIn==""){
-            newElement.setAttribute("id", "contentLine"+idCount.toString()+newElement.className);
-            idCount+=1;
-        }
-        else{
-            newElement.setAttribute("id", editingIDIn);
-        }
-        listenToRightClickOnLine(newElement);
-        return newElement;
-    }
-    function insertImgLine(newLine,afterID="textInput"){
-        if(newLine!==null){
-            var editor = document.getElementById("project_edit_page_editor");
-            var textInput = document.getElementById(afterID);
-            editor.insertBefore(newLine,textInput);
-        }
-    }
 
     // -------左键点击时，编辑已有段落
     function editLine(moveInputTolineId){
@@ -299,12 +321,13 @@ textarea {
         var moveInputToLine = document.getElementById(moveInputTolineId);
         var editor = document.getElementById("project_edit_page_editor");
         if(editingLineId!==""){
-            newLine = buildNewLine(textInput.value,editingLineId)
+            newLine = buildNewTextLine(textInput.value,editingLineTagName,editingLineId)
             if(newLine!==null){
-                listenToLeftClickOnLine(newLine);
+                // listenToLeftClickOnLine(newLine);
                 editor.insertBefore(newLine,textInput);
             }
             editingLineId = "";
+            editingLineTagName = "";
         }
         editor.insertBefore(textInput,moveInputToLine);
         textInput.value=moveInputToLine.innerHTML;
@@ -327,28 +350,59 @@ textarea {
         var RightClickMenuInsertAbove = document.getElementById("RightClickMenuInsertAbove");
         var RightClickMenuDelete = document.getElementById("RightClickMenuDelete");
         var RightClickMenuReplace = document.getElementById("RightClickMenuReplace");
-        // var RightClickMenuDebug = document.getElementById("RightClickMenuDebug");
-        if(clickedElement.tagName == "P"){
+        var RightClickMenuChangeTextTagName = document.getElementById("RightClickMenuChangeTextTagName");
+        var RightClickMenuDebug = document.getElementById("RightClickMenuDebug");
+
+        RightClickMenuInsertAbove.hidden = false;
+        listenToClickToInsertImage(RightClickMenuInsertAbove, clickedElementID);
+        if(clickedElement.tagName.toLowerCase() == "p"){
             // 点击文字段
-            RightClickMenuDelete.innerHTML="删除本段";
-            RightClickMenuReplace.hidden=true;
+            RightClickMenuDelete.hidden = false;
+            RightClickMenuDelete.innerHTML = "删除本段";
+
+            RightClickMenuReplace.hidden = true;
+
+            RightClickMenuChangeTextTagName.hidden = false;
+
+            RightClickMenuChangeTextTagName.innerHTML = "设为段落标题";
+            RightClickMenuChangeTextTagName.hidden = false;
+            listenToClickToChangeTextTagName(RightClickMenuChangeTextTagName,clickedElementID,"h1");
         }
-        else if(clickedElement.tagName == "IMG"){
+        else if(clickedElement.tagName.toLowerCase() == "h1"){
+            // 点击文字段
+            RightClickMenuDelete.hidden = false;
+            RightClickMenuDelete.innerHTML = "删除本段";
+
+            RightClickMenuReplace.hidden = true;
+
+            RightClickMenuChangeTextTagName.hidden = false;
+
+            RightClickMenuChangeTextTagName.innerHTML = "设为正文";
+            RightClickMenuChangeTextTagName.hidden = false;
+            listenToClickToChangeTextTagName(RightClickMenuChangeTextTagName,clickedElementID,"P");
+        }
+        else if(clickedElement.tagName.toLowerCase() == "img"){
             // 点击图片
-            RightClickMenuDelete.innerHTML="删除插图";
-            RightClickMenuReplace.hidden=false;
-            RightClickMenuReplace.innerHTML="替换插图";
+            RightClickMenuDelete.hidden = false;
+            RightClickMenuDelete.innerHTML = "删除插图";
+
+            RightClickMenuReplace.hidden = false;
+            RightClickMenuReplace.innerHTML = "替换插图";
             listenToClickToReplace(RightClickMenuReplace, clickedElementID)
-       }
-       else if(clickedElement.tagName == "TEXTAREA"){
+
+            RightClickMenuChangeTextTagName.hidden = true;
+      }
+       else if(clickedElement.tagName.toLowerCase() == "textarea"){
            // 点击编辑中文字
-           RightClickMenuDelete.hidden=true;
-           RightClickMenuReplace.hidden=true;
-        }
+           RightClickMenuDelete.hidden = true;
+           RightClickMenuReplace.hidden = true;
+           RightClickMenuChangeTextTagName.hidden = true;
+      }
+        RightClickMenuDebug.innerHTML=clickedElement.tagName;
         listenToClickToDelete(RightClickMenuDelete,clickedElementID);
 
         menuDisplayed = true;
-        // alert("You've tried to open context menu on "+insertImgAboveID + "->("+left.toString()+","+top.toString()+")");
+        // alert("");
         arguments[0].preventDefault();
     }
 
@@ -375,9 +429,11 @@ textarea {
 
     // -------添加右击菜单响应
     // 添加右击菜单选项-在上方插入图片的动作响应
-    function listenToClickToInsertImage(elementToClick, imageToAddID){
+    function listenToClickToInsertImage(elementToClick, elementAfterTheImgID){
         elementToClickWithoutListeners = removeCurrentListeners(elementToClick);
-        elementToClick.parentNode.replaceChild(elementToClickWithoutListeners,elementToClick);
+        observe(elementToClickWithoutListeners, 'click',function(){
+            hideContextmenuIfDisplayed();
+            insertImageBefore(arguments,elementAfterTheImgID);});
     }
     // 添加右击菜单选项-删除本段文字/本副图片的动作响应
     function listenToClickToDelete(elementToClick, elementToDeleteID){
@@ -393,12 +449,37 @@ textarea {
             hideContextmenuIfDisplayed();
             replaceImage(arguments,elementToReplaceID);});
     }
+    function listenToClickToSetSectionTitle(elementToClick, elementToSetAsSectionTitleID){
+        elementToClickWithoutListeners = removeCurrentListeners(elementToClick);
+        observe(elementToClickWithoutListeners, 'click',function(){
+            hideContextmenuIfDisplayed();
+            setAsSectionTitle(arguments,elementToSetAsSectionTitleID);});
+    }
+    function listenToClickToChangeTextTagName(elementToClick, elementToChangeTextTagName, newTagName){
+        elementToClickWithoutListeners = removeCurrentListeners(elementToClick);
+        observe(elementToClickWithoutListeners, 'click',function(){
+            hideContextmenuIfDisplayed();
+            changeTextTagName(arguments, elementToChangeTextTagName, newTagName);});
+    }
     // -------
 
 
     // -------右击菜单响应后的动作
     // 在上方插入图片
+    function insertImageBefore(arguments, elementAfterTheImgID){
+        var imgLoader = document.getElementById("imageLoader");
+        imgLoaderWithoutListeners = removeCurrentListeners(imgLoader);
 
+        var fileReader=new FileReader();
+        fileReader.onload = function(e) { 
+            insertNewElement(buildNewImgLine(this.result),elementAfterTheImgID);
+        };
+        imgLoaderWithoutListeners.addEventListener("change",function() {
+            // fill fr with image data    
+            fileReader.readAsDataURL(imgLoaderWithoutListeners.files[0]);
+        });
+        imgLoaderWithoutListeners.click();
+    }
     // 删除本段文字/本副图片的动作
     function deleteElement(arguments,elementToDeleteID){
         var editor = document.getElementById("project_edit_page_editor");
@@ -421,6 +502,17 @@ textarea {
             fileReader.readAsDataURL(imgLoaderWithoutListeners.files[0]);
         });
         imgLoaderWithoutListeners.click();
+    }
+    // 切换文字的标题等级或正文的动作
+    function changeTextTagName(arguments, textToChangeTagNameID,newTagName){
+        var textToChangeTagName = document.getElementById(textToChangeTagNameID);
+        var editor = document.getElementById("project_edit_page_editor");
+
+        textLineTagNameChanged = buildNewTextLine(textToChangeTagName.innerHTML,newTagName,textToChangeTagNameID);
+        textToChangeTagName.id = "toDelete";
+
+        editor.insertBefore(textLineTagNameChanged,textToChangeTagName);
+        editor.removeChild(textToChangeTagName);
     }
 
     // -------辅助方法
@@ -446,13 +538,24 @@ textarea {
                 <div class="row">
                     <div class="title_row">
                         <h1>项目编辑</h1>
+                        <div style="text-align: center">
+                            <textarea rows="1" cols="32" maxlength=32 style="height:2em; resize: none; text-align: center; text-indent: 0; width: 80%" id="titleInput"
+                            onfocus="if (this.value == '项目标题') this.value=''" onblur="if (this.value == '') this.value='项目标题'">
+                            </textarea>
+                        </div>
+                        <div style="text-align: center">
+                            <textarea rows="1" cols="32" maxlength=32 style="height:2em; resize: none; text-align: center; text-indent: 0; width: 80%" id="opganizerInput"
+                            onfocus="if (this.value == '运营机构') this.value=''" onblur="if (this.value == '') this.value='运营机构'">
+                            </textarea>
+                        </div>
+                        <p></p>
                         <br>
                     </div>
                 </div>
                 <!-- 项目故事的主体，文字和图 -->
                 <div class="row">
                     <div class="project_page_main_story" id="project_edit_page_editor">
-                        <textarea rows="1" style="height:1em; resize: none;" id="textInput">
+                        <textarea rows="1" style="height:1em; resize: none; width:100%" id="textInput">
                         </textarea>
                     </div>
                 </div>
@@ -482,7 +585,8 @@ textarea {
     <div class="menu-item" id="RightClickMenuInsertAbove">在上方插入图片</div>
     <div class="menu-item" id="RightClickMenuDelete">删</div>
     <div class="menu-item" id="RightClickMenuReplace">替换</div>
-    <!-- <div class="menu-item" id="RightClickMenuDebug">debug</div> -->
+    <div class="menu-item" id="RightClickMenuChangeTextTagName">切换各级标题或正文</div>
+    <div class="menu-item" id="RightClickMenuDebug">debug输出</div>
 </div>
 <!-- 隐藏的图片输入控件 -->
 <input id="imageLoader" type="file" style="display:none "/>
