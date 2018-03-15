@@ -59,7 +59,7 @@ ul,li{padding:0;margin:0}
     /*position:absolute;*/
     float: left;
     min-height: 796px;
-    box-shadow: 0 0 10px #BDBDBD;
+    box-shadow: 0 0 10px #31708f;
     width: 180px;
     background: #32323a;
 }
