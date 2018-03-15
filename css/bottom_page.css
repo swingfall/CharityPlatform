@@ -9,6 +9,21 @@ li {
     list-style: none;
 }
 
+.form-feedback{
+    height: 350px;
+    width: 80%;
+}
+
+.text-area{
+    font-size: 20px;
+    margin: 20px 65px;
+    padding: 20px 20px;
+    float: left;
+}
+
+#submit{
+    margin-left: 308px;
+}
 
 .title {
     color: #8a6d3b;
