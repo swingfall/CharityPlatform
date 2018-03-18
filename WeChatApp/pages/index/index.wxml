@@ -1,4 +1,5 @@
 <!--index.wxml-->
+<scroll-view scroll-y="true" bindscroll="scroll" scroll-top="{{scrollTop}}" bindscrolltolower="getMore" style="position:absolute; top:0; left:0; right:0; bottom:0;">
 <view class="container">
   <view class="userinfo">
     <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 点击登录 </button>
@@ -8,20 +9,38 @@
     </block>
   </view>
 
+
   <view class="activity_abstract_page_title">项目推荐</view>
-  <navigator class="activity_abstract" url="../activity/activity_DaShanLiDe/main">
-     <image src='../activity/activity_DaShanLiDe/images/cover.jpg' mode="aspectFit"> </image> 
-     <view class="activity_abstract_activity_title">大山里的健康小课桌</view>
-     <view class="activity_abstract_activity_operator">中国社会福利基金会</view>
-  </navigator>
-  <navigator class="activity_abstract" url="../activity/activity_AiDeFenBei/main">
-    <image src='../activity/activity_AiDeFenBei/images/cover.png' mode="aspectFit"> </image> 
-    <view class="activity_abstract_activity_title">爱的分贝 救救耳朵</view>
-    <view class="activity_abstract_activity_operator">中华思源工程扶贫基金会</view>
-  </navigator>
-  <navigator class="activity_abstract" url="../activity/activity_KunJingErTong/main">
-    <image src='../activity/activity_KunJingErTong/images/cover.jpg' mode="aspectFit"> </image> 
-    <view class="activity_abstract_activity_title">给困境儿童送面包</view>
-    <view class="activity_abstract_activity_operator">中国儿童少年基金会</view>
-  </navigator>
+
+
+  <view class="container">
+    <navigator class="activity_abstract" url="../activity/activity_DaShanLiDe/main">
+      <image src='../activity/activity_DaShanLiDe/images/cover.jpg' mode="aspectFit"> </image> 
+      <view class="activity_abstract_activity_title">大山里的健康小课桌</view>
+      <view class="activity_abstract_activity_operator">中国社会福利基金会</view>
+    </navigator>
+    <navigator class="activity_abstract" url="../activity/activity_AiDeFenBei/main">
+      <image src='../activity/activity_AiDeFenBei/images/cover.png' mode="aspectFit"> </image> 
+      <view class="activity_abstract_activity_title">爱的分贝 救救耳朵</view>
+      <view class="activity_abstract_activity_operator">中华思源工程扶贫基金会</view>
+    </navigator>
+    <navigator class="activity_abstract" url="../activity/activity_KunJingErTong/main">
+      <image src='../activity/activity_KunJingErTong/images/cover.jpg' mode="aspectFit"> </image> 
+      <view class="activity_abstract_activity_title">给困境儿童送面包</view>
+      <view class="activity_abstract_activity_operator">中国儿童少年基金会</view>
+    </navigator>
+  </view>
+
+  <text class="">\n</text>
+  <textarea id="activity_search" class="activity_search_textarea" show-confirm-bar="true" maxlength="16" bindinput='onSearchInput' bindblur='onSearchBlur' bindfocus='onSearchFocus' bindSubmit="onSearchSubmit" value="{{searchContent}}"></textarea>
+
+
+  <text class="">\n\n\n\n</text>
+
+  <view class="widget-goTop" bindtap="goTop" wx:if="{{ floorstatus }}">
+    <view class="gotop-wrap">
+      <view class="icon icon-top"></view> <view>回到顶部</view>
+    </view>
+  </view>
 </view>
+</scroll-view>

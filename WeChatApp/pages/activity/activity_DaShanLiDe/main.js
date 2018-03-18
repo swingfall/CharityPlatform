@@ -9,7 +9,7 @@ Page({
     floorstatus: false
   },
 
-  // 滑动更新以及跳转顶部
+   // 滑动更新以及跳转顶部
   goTop: function (e) {
     this.setData({
       scrollTop: 0
@@ -27,7 +27,7 @@ Page({
     }
   },
   getMore: function () {
-
+    
   },
 
   /**

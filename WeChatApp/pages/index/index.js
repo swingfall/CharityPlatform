@@ -4,11 +4,57 @@ const app = getApp()
 
 Page({
   data: {
-    motto: 'Hello World',
-    userInfo: {},
-    hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    scrollTop: 0,
+    floorstatus: false
   },
+
+  // 滑动更新以及跳转顶部
+  goTop: function (e) {
+    this.setData({
+      scrollTop: 0
+    })
+  },
+  scroll: function (e) {
+    if (e.detail.scrollTop > 25) {
+      this.setData({
+        floorstatus: true
+      });
+    } else {
+      this.setData({
+        floorstatus: false
+      });
+    }
+  },
+  getMore: function () {
+
+  },
+
+  onSearchSubmit: function(e){
+
+  },
+
+  onSearchInput: function(e){
+    if (e.detail.value[e.detail.value.length-1] != '\n') {
+
+    }
+  },
+
+  onSearchFocus: function(e){
+    if (e.detail.value == "搜索项目") {
+      this.setData({
+        searchContent: ""
+      });
+    }
+  },
+
+  onSearchBlur: function (e) {
+    if (e.detail.value.length == 0) {
+      this.setData({
+        searchContent: "搜索项目"
+      });
+    }
+  },
+
   //事件处理函数
   bindViewTap: function() {
     wx.navigateTo({
@@ -16,6 +62,10 @@ Page({
     })
   },
   onLoad: function () {
+    this.setData({
+      searchContent: "搜索项目"
+    });
+
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
