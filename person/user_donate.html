@@ -3,41 +3,161 @@
 <head>
     <meta charset="utf-8">
     <title>Bootstrap 实例 - 模态框（Modal）插件</title>
-    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="../css/bootstrap.css" rel="stylesheet"/>
+    <link href="../css/style.css" rel="stylesheet"/>
+    <link href="../css/manage.css" rel="stylesheet"/>
+    <link href="../css/popup.css" rel="stylesheet"/>
+    <link href="../css/Iframe.css" rel="stylesheet"/>
+    <script src="../js/jquery-3.3.1.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
 </head>
-<body>
 
-<h2>创建模态框（Modal）</h2>
-<!-- 按钮触发模态框 -->
-<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-    开始演示模态框
-</button>
-<!-- 模态框（Modal） -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                    &times;
-                </button>
-                <h4 class="modal-title" id="myModalLabel">
-                    模态框（Modal）标题
-                </h4>
+<!--上边栏加图片/header-->
+<body style="position: relative;">
+    <div class="banner-in"></div>
+    <div class="header container">
+        <div class="logo">
+            <a href="/index"><img src="/images/logo.png" alt="click this to homepage"/></a>
+        </div>
+        <div class="top-nav">
+            <div class="main_nav" th:if="${session.user} == null">
+                <ul>
+                    <li><a href="/login">登录</a></li>
+                    <li><a href="/register">注册</a></li>
+                </ul>
             </div>
-            <div class="modal-body">
-                在这里添加一些文本
+            <div class="main_nav" th:if="${session.user} != null" style="width: 100%; margin-right: 150px">
+                <ul>
+                    <li style="color: #fff;font-size: 17.6px; font-weight: 700 ;border-bottom:none">
+                        <span>您好！</span><span th:text="${session.user.username}"></span></li>
+                    <li><a href="/personal_center">个人中心</a></li>
+                    <li><a href="/loginout">注销</a></li>
+                </ul>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">关闭
-                </button>
-                <button type="button" class="btn btn-primary">
-                    提交更改
-                </button>
+        </div>
+    </div>
+
+
+
+
+    <!--main-content-->
+    <div class="main_content" style="min-height: 900px;">
+        <div class="left-menu" style="min-height: 896px">
+            <ul>
+                <li><a href=""><i class="glyph-icon icon-chevron-right1"></i>联系我们</a></li>
+            </ul>
+        </div>
+
+        <div class="right-content">
+            <div class="title">
+                <h6>境界的彼方</h6>
             </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal -->
-</div>
+            <br/>
+
+
+            <div class="donate-simple-block">
+                <div class="donate-simple-block-left">
+                    <div class="donate-item-view-simple">
+                        <dl>
+                            <dd>
+                                <img src="/images/pic.jpg" alt="给困境儿童送生活包" width="40%" height="40%"/>
+                            </dd>
+                            <dt>给困境儿童送生活包</dt>
+                            <dd>
+                                已募善款： <em class="ft-amount-16 ft-orange ft-bold">4797687.60</em>元
+                            </dd>
+                            <dd>参与人数：2657359 人参与捐助</dd>
+                            <dd>
+                                项目时间：2015-11-12 至 2020-02-28
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+                <div class="donate-simple-block-right">
+                    <div class="donate-form-block">
+                        <div class="ui-form-item">
+                            <label for="" class="ui-label">收 款 方：</label> <em class="ui-form-text">中国儿童少年基金会</em>
+                        </div>
+                        <div class="ui-form-item">
+                            <label for="" class="ui-label">捐款金额：</label>
+                            <input id="amount" type="text" class="ui-input" name="amount" value="5" />&nbsp; 元
+                            <div class="ui-form-explain"> </div></div>
+                        <div class="ui-form-item ">
+                            <label for="" class="ui-label"></label>
+                            <input id="J-isAnonymous" class="ui-hidden" type="checkbox" name="isAnonymous"/>
+                            <label for="J-isAnonymous">匿名捐赠</label>
+                        </div>
+                        <div class="ui-form-item" style="margin-left: 20%;">
+                            <!--点击确定弹出bootstrap模态框-->
+                            <button class="btn-form" data-toggle="modal" data-target="#myModal">确定</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 模态框（Modal） -->
+                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                    &times;
+                                </button>
+                                <h4 class="modal-title" id="myModalLabel">
+                                    请扫描下方二维码：
+                                </h4>
+                            </div>
+                            <div class="modal-body">
+                                <img src="/images/pay_QRcode.png"  width="60%"  height="60%"/>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                                </button>
+                                <button type="button" class="btn btn-primary" data-dismiss="modal">
+                                    确定
+                                </button>
+                            </div>
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal -->
+                </div>
+
+
+            </div>
+
+
+
+
+        </div>
+    </div>
+
+
+
+
+
+
+<!--footer-->
+    <div class="footer">
+        <div class="container">
+            <ul>
+                <li><a href="/contact_us">联系我们</a></li>
+                <li>|</li>
+                <li><a href="/about_us">关于境界的彼方</a></li>
+                <li>|</li>
+                <li><a href="/admins">管理中心</a></li>
+                <li>|</li>
+                <li><a href="/feedback">意见反馈</a></li>
+            </ul>
+            <span class="drop"> </span>
+
+            <p>境界の彼方 <span>S.E.U.</span> Suzhou, P.R.China</p>
+
+            <p class="footer-class">Copyright &copy; 1Q84.</p>
+            <ul class="social-icons">
+                <li class="twitter"><a href="#"><span> </span></a></li>
+                <li class="gmail"><a href="#"><span> </span></a></li>
+                <li class="print"><a href="#"><span> </span></a></li>
+            </ul>
+        </div>
+    </div>
+
 </body>
 </html>
