@@ -1,0 +1,55 @@
+/**app.wxss**/
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 0;
+  box-sizing: border-box;
+} 
+
+.activity_abstract{
+  margin-top: 32rpx;
+  height: 400rpx;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding: 0.25em;
+  /* border-top: thin silver solid; */
+  border-bottom: thin silver solid;
+  /* background: grey; */
+}
+
+.activity_abstract_page_title{
+  text-align: center;
+  font-size: 1.4em;
+  font-weight: bold;
+  margin: 0.5em;
+  padding: 0.1em 0 0.1em 0;
+  border-top: thick silver solid;
+  border-bottom: thick silver solid;
+}
+
+.activity_abstract_activity_title{
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.activity_abstract_activity_operator{
+  font-size: 1em;
+  font-weight: normal;
+}
+
+.activity_page_title{
+  font-size: 2em;
+  font-weight: bold
+}
+
+.activity_page_metadata{
+  font-size: 1em;
+
+}

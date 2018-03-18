@@ -1,0 +1,4 @@
+<view class="container">
+  <view class="activity_page_title">爱的分贝 救救耳朵</view>
+  <image src='images/cover.png' mode="aspectFit"></image>
+</view>

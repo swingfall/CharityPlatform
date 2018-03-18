@@ -1,0 +1,31 @@
+/**index.wxss**/
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+  vertical-align: top;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+}
+
+.usermotto {
+  margin-top: 50px;
+  background: green;
+}
+
+.activity_list_title{
+  padding-top: 0.25em;
+  padding-bottom: 0.25em; 
+  font-size: 1.5em;
+  font-weight: bold;
+}

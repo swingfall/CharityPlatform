@@ -1,0 +1,27 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="userinfo">
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 点击登录 </button>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view>
+
+  <view class="activity_abstract_page_title">项目推荐</view>
+  <navigator class="activity_abstract" url="../activity/activity_DaShanLiDe/main">
+     <image src='../activity/activity_DaShanLiDe/images/cover.jpg' mode="aspectFit"> </image> 
+     <view class="activity_abstract_activity_title">大山里的健康小课桌</view>
+     <view class="activity_abstract_activity_operator">中国社会福利基金会</view>
+  </navigator>
+  <navigator class="activity_abstract" url="../activity/activity_AiDeFenBei/main">
+    <image src='../activity/activity_AiDeFenBei/images/cover.png' mode="aspectFit"> </image> 
+    <view class="activity_abstract_activity_title">爱的分贝 救救耳朵</view>
+    <view class="activity_abstract_activity_operator">中华思源工程扶贫基金会</view>
+  </navigator>
+  <navigator class="activity_abstract" url="../activity/activity_KunJingErTong/main">
+    <image src='../activity/activity_KunJingErTong/images/cover.jpg' mode="aspectFit"> </image> 
+    <view class="activity_abstract_activity_title">给困境儿童送面包</view>
+    <view class="activity_abstract_activity_operator">中国儿童少年基金会</view>
+  </navigator>
+</view>
