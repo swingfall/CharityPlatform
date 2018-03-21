@@ -1,0 +1,49 @@
+<view class="container">
+  <view class="userinfo">
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 点击登录 </button>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view>
+
+  <view class="container donate_page_box">
+    <view class="donate_page_activity_name_hint">捐助项目</view>
+    <view class="donate_page_activity_name">{{donate_activity}}</view>
+    <view class="donate_page_activity_amount_hint">捐助额(元)</view>
+
+
+    <view class="donate_page_activity_amount_grid_vertical">
+      <view class="donate_page_activity_amount_grid_horizontal">
+        <button class="donate_page_activity_amount_button" 
+        style="color:{{donateAmountElements[0].color}}; background:{{donateAmountElements[0].bgColor}}" 
+        id="{{donateAmountElements[0].id}}" bindtap='onTapDonateBtn'>{{donateAmountElements[0].amount}}</button>
+        <button class="donate_page_activity_amount_button" 
+        style="color:{{donateAmountElements[1].color}}; background:{{donateAmountElements[1].bgColor}}" 
+        id="{{donateAmountElements[1].id}}" bindtap='onTapDonateBtn'>{{donateAmountElements[1].amount}}</button>
+        <button class="donate_page_activity_amount_button" 
+        style="color:{{donateAmountElements[2].color}}; background:{{donateAmountElements[2].bgColor}}" 
+        id="{{donateAmountElements[2].id}}" bindtap='onTapDonateBtn'>{{donateAmountElements[2].amount}}</button>
+      </view>
+      <view class="donate_page_activity_amount_grid_horizontal">
+        <button class="donate_page_activity_amount_button" 
+        style="color:{{donateAmountElements[3].color}}; background:{{donateAmountElements[3].bgColor}}" 
+        id="{{donateAmountElements[3].id}}" bindtap='onTapDonateBtn'>{{donateAmountElements[3].amount}}</button>
+        <button class="donate_page_activity_amount_button" 
+        style="color:{{donateAmountElements[4].color}}; background:{{donateAmountElements[4].bgColor}}" 
+        id="{{donateAmountElements[4].id}}" bindtap='onTapDonateBtn'>{{donateAmountElements[4].amount}}</button>
+        <button class="donate_page_activity_amount_button" 
+        style="color:{{donateAmountElements[5].color}}; background:{{donateAmountElements[5].bgColor}}" 
+        id="{{donateAmountElements[5].id}}" bindtap='onTapDonateBtn'>{{donateAmountElements[5].amount}}</button>
+      </view>
+      <view class="donate_page_activity_amount_grid_horizontal">
+        <textarea class="donate_page_activity_amount_custom" 
+        style="color:{{donateAmountElements[6].color}}; background:{{donateAmountElements[6].bgColor}}"
+        id="{{donateAmountElements[6].id}}" 
+        bindfocus='onEditDonateCustom' bindblur='onLeaveDonateCustom' bindinput='onDonateCustomInput' value="{{donateCustomValue}}"></textarea>
+      </view>
+      <button class="donate_page_submit" style="color:{{submitBtnColor}}; background:{{submitBtnBGColor}}" bindtap='onSubmit'>提交</button>
+    </view>
+
+  </view>
+</view>

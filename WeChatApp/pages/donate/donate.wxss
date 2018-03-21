@@ -1,0 +1,79 @@
+.donate_page_box{
+  margin: 16px 0 16px 0;
+  padding: 5px 0 5px 0;
+  border: thick dotted silver;
+  width: 95%;
+}
+
+.donate_page_activity_name_hint{
+  font-size: 1.2em;
+  font-weight: normal;
+}
+
+.donate_page_activity_name{
+  font-size: 1.6em;
+  font-weight: bold;
+  color: tomato;
+}
+
+.donate_page_activity_amount_hint{
+  font-size: 1.2em;
+  font-weight: normal;
+  margin: 0.5em 0 0 0;
+}
+
+.donate_page_activity_amount_grid_vertical {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 0; 
+  box-sizing: border-box; 
+} 
+
+.donate_page_activity_amount_grid_horizontal {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 0; 
+  box-sizing: border-box; 
+} 
+
+.donate_page_activity_amount_button{
+  display:flex;
+  flex-direction:column;
+  font-size: 1.3em;
+  font-weight: bold;
+  /* color: tomato; */
+  /* background: whitesmoke; */
+  width: 80%;
+  height: 2em;
+  align-items:center;
+  justify-content:center;
+  margin: 0.1em 0.1em 0.1em 0.1em
+}
+
+.donate_page_activity_amount_custom{
+  display:flex;
+  flex-direction:column;
+  font-size: 1.3em;
+  font-weight: bold;
+  line-height: 2em;
+  color: tomato;
+  background: whitesmoke;
+  width: 100%;
+  height: 2em;
+  text-align: center;
+  margin: 0.1em 0.1em 0.1em 0.1em
+}
+
+.donate_page_submit{
+  background: red;
+  color: white;
+  margin: 0.5em 0 0 0;
+  width: 50%;
+  font-weight: bold;
+}
